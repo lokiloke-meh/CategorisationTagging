@@ -1,0 +1,688 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Trace Visualization: 6a49c0d6a4ac12f1f44d0c064897dd90</title>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
+            #chart-container { height: 50vh; border-bottom: 2px solid #ccc; }
+            #details-pane { height: 45vh; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; }
+            #details-output { 
+                white-space: pre-wrap; word-break: break-all; background-color: #f8f9fa; 
+                padding: 15px; border: 1px solid #ddd; border-radius: 5px; 
+                overflow-y: auto; flex-grow: 1; margin: 0; font-family: monospace;
+            }
+            h4 { margin: 0 0 10px 0; font-family: sans-serif; }
+            #instruction-text { margin: 0 0 10px 0; color: #666; font-family: sans-serif; }
+        </style>
+    </head>
+    <body>
+        <div id="chart-container">
+            <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="plotly-gantt" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("plotly-gantt")) {                    Plotly.newPlot(                        "plotly-gantt",                        [{"base":["2026-06-09T12:09:48.929564"],"customdata":[["0xe004805feb28b423",null]],"hovertemplate":"Task=chain.Tagging\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.Tagging","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"chain.Tagging","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"WlQ="},"xaxis":"x","y":["chain.Tagging (b423)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:48.929676"],"customdata":[["0xb7215e3ca5043b3b","0xe004805feb28b423"]],"hovertemplate":"Task=chain.SequentialChain\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.SequentialChain","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"chain.SequentialChain","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"WVQ="},"xaxis":"x","y":["chain.SequentialChain (3b3b)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:48.929781"],"customdata":[["0x21f1f36f18e338ac","0xb7215e3ca5043b3b"]],"hovertemplate":"Task=chain.RefineSummarizeChain\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.RefineSummarizeChain","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"chain.RefineSummarizeChain","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"HA8="},"xaxis":"x","y":["chain.RefineSummarizeChain (38ac)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:48.930060"],"customdata":[["0x92f9d94936188a67","0x21f1f36f18e338ac"]],"hovertemplate":"Task=ollama.chat.string\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ollama.chat.string","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"ollama.chat.string","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"Gw8="},"xaxis":"x","y":["ollama.chat.string (8a67)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:52.798295"],"customdata":[["0xdcd12e882db92df6","0xb7215e3ca5043b3b"]],"hovertemplate":"Task=chain.ImpactRouter\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.ImpactRouter","marker":{"color":"#FFA15A","pattern":{"shape":""}},"name":"chain.ImpactRouter","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"O0U="},"xaxis":"x","y":["chain.ImpactRouter (2df6)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:52.798367"],"customdata":[["0xbfbb2b21a4389b4e","0xdcd12e882db92df6"]],"hovertemplate":"Task=chain.TopicBucketing\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.TopicBucketing","marker":{"color":"#19d3f3","pattern":{"shape":""}},"name":"chain.TopicBucketing","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"rxw="},"xaxis":"x","y":["chain.TopicBucketing (9b4e)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:09:52.799973","2026-06-09T12:10:00.146068","2026-06-09T12:10:05.541310","2026-06-09T12:10:08.740069"],"customdata":[["0x0c482eda356701af","0xbfbb2b21a4389b4e"],["0x22964a0bdad28695","0x874cedbb86b24abf"],["0x368d7c9fecdd1509","0x05fcd1dbb9dd9337"],["0xf61431b00c80abe8","0x0c70bad3f5dcfed5"]],"hovertemplate":"Task=ollama.chat.dict\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ollama.chat.dict","marker":{"color":"#FF6692","pattern":{"shape":""}},"name":"ollama.chat.dict","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"rBwPFXgM8gY="},"xaxis":"x","y":["ollama.chat.dict (01af)","ollama.chat.dict (8695)","ollama.chat.dict (1509)","ollama.chat.dict (abe8)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:00.140287","2026-06-09T12:10:05.538154","2026-06-09T12:10:08.733891"],"customdata":[["0x460c9cd282338e8e","0xbfbb2b21a4389b4e"],["0x91749b176f80ab7a","0x874cedbb86b24abf"],["0xa403cebfb499519f","0x05fcd1dbb9dd9337"]],"hovertemplate":"Task=eval.RepeatedCategoriesConsistencyEvals\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"eval.RepeatedCategoriesConsistencyEvals","marker":{"color":"#B6E880","pattern":{"shape":""}},"name":"eval.RepeatedCategoriesConsistencyEvals","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i1","bdata":"AAEA"},"xaxis":"x","y":["eval.RepeatedCategoriesConsistencyEvals (8e8e)","eval.RepeatedCategoriesConsistencyEvals (ab7a)","eval.RepeatedCategoriesConsistencyEvals (519f)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:00.140938","2026-06-09T12:10:05.539523","2026-06-09T12:10:08.734383"],"customdata":[["0xfe650e934531684c","0xbfbb2b21a4389b4e"],["0x2d6399493043970e","0x874cedbb86b24abf"],["0xab9f92e8d0b015b7","0x05fcd1dbb9dd9337"]],"hovertemplate":"Task=eval.CategoriesModelThoughtConsistencyEvals\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"eval.CategoriesModelThoughtConsistencyEvals","marker":{"color":"#FF97FF","pattern":{"shape":""}},"name":"eval.CategoriesModelThoughtConsistencyEvals","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i1","bdata":"AAAA"},"xaxis":"x","y":["eval.CategoriesModelThoughtConsistencyEvals (684c)","eval.CategoriesModelThoughtConsistencyEvals (970e)","eval.CategoriesModelThoughtConsistencyEvals (15b7)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:00.142577"],"customdata":[["0xe6665776f49add00","0xdcd12e882db92df6"]],"hovertemplate":"Task=chain.TradingTopicsDistiller\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.TradingTopicsDistiller","marker":{"color":"#FECB52","pattern":{"shape":""}},"name":"chain.TradingTopicsDistiller","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"iSg="},"xaxis":"x","y":["chain.TradingTopicsDistiller (dd00)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:00.143823"],"customdata":[["0x374a899a25f8a0d0","0xe6665776f49add00"]],"hovertemplate":"Task=chain.TradingTopicsCategorisation\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.TradingTopicsCategorisation","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"chain.TradingTopicsCategorisation","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"kSE="},"xaxis":"x","y":["chain.TradingTopicsCategorisation (a0d0)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:00.145348"],"customdata":[["0x874cedbb86b24abf","0x374a899a25f8a0d0"]],"hovertemplate":"Task=chain.SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges]\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges]","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"chain.SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges]","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"ExU="},"xaxis":"x","y":["chain.SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges] (4abf)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:05.540628"],"customdata":[["0x05fcd1dbb9dd9337","0x374a899a25f8a0d0"]],"hovertemplate":"Task=chain.SingleTradingTopicCategorisation[MockDRDisasterRecoverySession]\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.SingleTradingTopicCategorisation[MockDRDisasterRecoverySession]","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"chain.SingleTradingTopicCategorisation[MockDRDisasterRecoverySession]","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"eww="},"xaxis":"x","y":["chain.SingleTradingTopicCategorisation[MockDRDisasterRecoverySession] (9337)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:08.737432"],"customdata":[["0x0c70bad3f5dcfed5","0xe6665776f49add00"]],"hovertemplate":"Task=chain.TradingTopicsSummarisation\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"chain.TradingTopicsSummarisation","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"chain.TradingTopicsSummarisation","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i2","bdata":"9QY="},"xaxis":"x","y":["chain.TradingTopicsSummarisation (fed5)"],"yaxis":"y","type":"bar"},{"base":["2026-06-09T12:10:10.519169"],"customdata":[["0x052cbec74e67ec05","0xe6665776f49add00"]],"hovertemplate":"Task=eval.ResultDataValidationEvals\u003cbr\u003eStart=%{base}\u003cbr\u003eFinish=%{x}\u003cbr\u003eDisplay Name=%{y}\u003cbr\u003eSpan ID=%{customdata[0]}\u003cbr\u003eParent ID=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"eval.ResultDataValidationEvals","marker":{"color":"#FFA15A","pattern":{"shape":""}},"name":"eval.ResultDataValidationEvals","orientation":"h","showlegend":true,"textposition":"auto","x":{"dtype":"i1","bdata":"AA=="},"xaxis":"x","y":["eval.ResultDataValidationEvals (ec05)"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"type":"date"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":""},"categoryorder":"array","categoryarray":["chain.Tagging (b423)","chain.SequentialChain (3b3b)","chain.RefineSummarizeChain (38ac)","ollama.chat.string (8a67)","chain.ImpactRouter (2df6)","chain.TopicBucketing (9b4e)","ollama.chat.dict (01af)","eval.RepeatedCategoriesConsistencyEvals (8e8e)","eval.CategoriesModelThoughtConsistencyEvals (684c)","chain.TradingTopicsDistiller (dd00)","chain.TradingTopicsCategorisation (a0d0)","chain.SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges] (4abf)","ollama.chat.dict (8695)","eval.RepeatedCategoriesConsistencyEvals (ab7a)","eval.CategoriesModelThoughtConsistencyEvals (970e)","chain.SingleTradingTopicCategorisation[MockDRDisasterRecoverySession] (9337)","ollama.chat.dict (1509)","eval.RepeatedCategoriesConsistencyEvals (519f)","eval.CategoriesModelThoughtConsistencyEvals (15b7)","chain.TradingTopicsSummarisation (fed5)","ollama.chat.dict (abe8)","eval.ResultDataValidationEvals (ec05)"],"autorange":"reversed"},"legend":{"title":{"text":"Task"},"tracegroupgap":0},"title":{"text":"Detailed Trace Timeline: 6a49c0d6a4ac12f1f44d0c064897dd90"},"barmode":"overlay","margin":{"l":20,"r":20,"t":40,"b":20},"clickmode":"event+select"},                        {"responsive": true}                    )                };            </script>        </div>
+        </div>
+        <div id="details-pane">
+            <h4>Span Details</h4>
+            <p id="instruction-text">Click a bar in the timeline to view its input/output details.</p>
+            <pre id="details-output"></pre>
+        </div>
+
+        <script type="text/javascript">
+            const spanDetails = {
+  "0x92f9d94936188a67": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "92f9d94936188a67",
+    "data_type": "LLMResult",
+    "system_prompt": "\n                You are an assistant analyzing parts of a large document. \n                Read the text given by the user and extract all relevant information and key entities.\n                Only use the dates explicitly stated in the provided document. If a year, date, or number is not explicitly mentioned, do not mention it instead of guessing.\n\n                Rules:\n                Be objective, concise, thorough and accurate.\n                Do not add conversational fillers or summaries outside the extraction.\n                Your summary should not exceed 2000 characters.\n                ",
+    "user_input": "---\nTitle: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities\n  Market\nSource_URL: https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/EPD_CE_001_25_e.pdf\nScraped_At: '2026-05-22T21:09:47.396160'\nDocument_Type: PDF Direct Link\nDownloaded_PDF_Paths:\n- pdf/Consultation_on_Board_Lot_Framework_Enhancements_in_the_Hong_Kong_Securities_Market.pdf\n---\n\n# Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market\n\n**Note:** This circular is a direct PDF document. - [View Local PDF](./pdf/Consultation_on_Board_Lot_Framework_Enhancements_in_the_Hong_Kong_Securities_Market.pdf)\n- [Original Link](https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/EPD_CE_001_25_e.pdf)\n\n---\n## PDF Content\n\n香 港 聯 合 交 易 所 有 限 公 司 \n(香港交易及結算所有限公司全資附屬公司) \nTHE STOCK EXCHANGE OF HONG KONG LIMITED \n(A wholly-owned subsidiary of Hong Kong Exchanges and Clearing Limited) \n通告  CIRCULAR \n \n \nSubject: Consultation on Board Lot Framework Enhancements in the  Hong Kong \nSecurities Market  \n \nEnquiry: –    Mr. Ryan Yeung (Tel: 2840 2362     E-mail: ryanyeung@hkex.com.hk) \n–    Mr. Victor Yip (Tel: 2840 3006     E-mail: victoryip@hkex.com.hk) \n \nHong Kong Exchanges and Clearing Limited (“HKEX”) has today (18 December 2025) published a \nconsultation paper on ‘Board Lot Framework Enhancements  in the Hong Kong Securities Market’  \n(“Consultation Paper”). HKEX is committed to continuously enhanc ing market structure, and in accordance with \nrecommendations made by the Hong Kong Special Administrative Region Government Task Force \non Enhancing Stock Market Liquidity , HKEX is proposing a new board lot framework  which seeks \nto enhance market competitiveness by improving market efficiency and accessibility. The proposed new board lot framework applies to equities 1 and Real Estate Investment Trusts \n(“REITs”), and comprises of the following three components:  \n \n1. Reduction of board lot value floor guidance from HK$2,000 to HK$1,000 \n2. Introduction of board lot value ceiling guidance at HK$50,000 \n3. Reduction of board lot units to a set of eight standardised options: 1, 50, 100, 500, 1,000, \n2,000, 5,000, and 10,000 shares \n \nThe Consultation P aper proposes a two-phase implementation  approach. In phase one, new \nissuers will be required to comply with all three components of the board lot framework upon listing, \nwhile existing issuers will only be required to comply with the board lot value floor and ceiling \nguidance. During phase two, each existing issuer will be required to adopt one of the standardised \n \n1 The following instruments are excluded from the scope of the proposal: Exchange Traded Products, \nStructured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the \nListing Rules ), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company  shares and \nwarrants. 編號 \nRef. No.: EPD/CE/001/25 \n 日期 \nDate: 18/12/2025\n\n2 \nboard lot units within a specified period following its transition to uncertificated shareholding under \nthe Uncertificated Securities Market initiative. HKEX cordially invites market participants, including but not limited to Exchange Participants, listed \ncompanies, share registrars, broker system vendors, information vendors and investors, to provide \nfeedback on the proposal  by submitting a response to the questionnaire attached to the \nConsultation Paper published on the HKEX website . The consultation period will be closed on  12 \nMarch 2026 (Thursday). Nikki Falconar \nSenior Vice President \nEquities Product Development Department \nMarkets Division \n \nThis circular has been issued in the English language with a separate Chinese language \ntranslation. If there is any conflict in the circulars between the meaning of Chinese words or terms \nin the Chinese language version and English words in the English language version, the meaning \nof the English words shall prevail. ",
+    "model_options": {
+      "temperature": 0
+    },
+    "model_name": "gemma4:e4b-it-qat",
+    "model_result": "**Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "model_thought": null,
+    "model_load_duration_secs": 0.279706071,
+    "prompt_token_count": 1256,
+    "prompt_eval_duration_secs": 0.1646,
+    "response_tokens_per_second": 147.43913676763472,
+    "success": true,
+    "error_message": null
+  },
+  "0x21f1f36f18e338ac": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "21f1f36f18e338ac",
+    "chain_name": "RefineSummarizeChain",
+    "input_data": "---\nTitle: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities\n  Market\nSource_URL: https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/EPD_CE_001_25_e.pdf\nScraped_At: '2026-05-22T21:09:47.396160'\nDocument_Type: PDF Direct Link\nDownloaded_PDF_Paths:\n- pdf/Consultation_on_Board_Lot_Framework_Enhancements_in_the_Hong_Kong_Securities_Market.pdf\n---\n\n# Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market\n\n**Note:** This circular is a direct PDF document. - [View Local PDF](./pdf/Consultation_on_Board_Lot_Framework_Enhancements_in_the_Hong_Kong_Securities_Market.pdf)\n- [Original Link](https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/EPD_CE_001_25_e.pdf)\n\n---\n## PDF Content\n\n香 港 聯 合 交 易 所 有 限 公 司 \n(香港交易及結算所有限公司全資附屬公司) \nTHE STOCK EXCHANGE OF HONG KONG LIMITED \n(A wholly-owned subsidiary of Hong Kong Exchanges and Clearing Limited) \n通告  CIRCULAR \n \n \nSubject: Consultation on Board Lot Framework Enhancements in the  Hong Kong \nSecurities Market  \n \nEnquiry: –    Mr. Ryan Yeung (Tel: 2840 2362     E-mail: ryanyeung@hkex.com.hk) \n–    Mr. Victor Yip (Tel: 2840 3006     E-mail: victoryip@hkex.com.hk) \n \nHong Kong Exchanges and Clearing Limited (“HKEX”) has today (18 December 2025) published a \nconsultation paper on ‘Board Lot Framework Enhancements  in the Hong Kong Securities Market’  \n(“Consultation Paper”). HKEX is committed to continuously enhanc ing market structure, and in accordance with \nrecommendations made by the Hong Kong Special Administrative Region Government Task Force \non Enhancing Stock Market Liquidity , HKEX is proposing a new board lot framework  which seeks \nto enhance market competitiveness by improving market efficiency and accessibility. The proposed new board lot framework applies to equities 1 and Real Estate Investment Trusts \n(“REITs”), and comprises of the following three components:  \n \n1. Reduction of board lot value floor guidance from HK$2,000 to HK$1,000 \n2. Introduction of board lot value ceiling guidance at HK$50,000 \n3. Reduction of board lot units to a set of eight standardised options: 1, 50, 100, 500, 1,000, \n2,000, 5,000, and 10,000 shares \n \nThe Consultation P aper proposes a two-phase implementation  approach. In phase one, new \nissuers will be required to comply with all three components of the board lot framework upon listing, \nwhile existing issuers will only be required to comply with the board lot value floor and ceiling \nguidance. During phase two, each existing issuer will be required to adopt one of the standardised \n \n1 The following instruments are excluded from the scope of the proposal: Exchange Traded Products, \nStructured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the \nListing Rules ), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company  shares and \nwarrants. 編號 \nRef. No.: EPD/CE/001/25 \n 日期 \nDate: 18/12/2025\n\n2 \nboard lot units within a specified period following its transition to uncertificated shareholding under \nthe Uncertificated Securities Market initiative. HKEX cordially invites market participants, including but not limited to Exchange Participants, listed \ncompanies, share registrars, broker system vendors, information vendors and investors, to provide \nfeedback on the proposal  by submitting a response to the questionnaire attached to the \nConsultation Paper published on the HKEX website . The consultation period will be closed on  12 \nMarch 2026 (Thursday). Nikki Falconar \nSenior Vice President \nEquities Product Development Department \nMarkets Division \n \nThis circular has been issued in the English language with a separate Chinese language \ntranslation. If there is any conflict in the circulars between the meaning of Chinese words or terms \nin the Chinese language version and English words in the English language version, the meaning \nof the English words shall prevail. ",
+    "output_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "21f1f36f18e338ac",
+      "session_id": "20260609_200623"
+    },
+    "history": [],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  },
+  "0x0c482eda356701af": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "0c482eda356701af",
+    "data_type": "LLMResult",
+    "system_prompt": "\n        You are in charge of a trading system. Your task is to analyze the provided user input and select the one MOST relevant subcategory from below\n\n        Subcategories = ['SpecificSecurityImpact', 'SegmentAssetLevelImpact', 'MarketWideImpact']\n\n        You can only choose one of the subcategories. Rely only on the data provided by the user. \n\n        Think before answering, explain your reasoning step by step. Conclude on the final subcategory in JSON that is consistent with the reasoning.\n\n        In your reasoning:\n        - Write reasoning that supports only the selected category.\n        - Do not discuss categories that were not selected.\n        - Use affirmative language.\n        - Do not use elimination reasoning\n\n        \n        SpecificSecurityImpact\n        - Use only when the event concerns one identified security (stock, bond, ETF, ticker, issuer) or a very small named set of securities.\n        - Examples:\n        Listing of stock 123.\n        Suspension of ticker XYZ.\n\n        SegmentAssetLevelImpact\n        - Use when the event concerns a market segment, asset class, trading channel, participant type, or operational subsystem affecting many securities.\n        - DO NOT use if the notice impacts systems used by all standard securities\n        - Examples:\n        Derivatives platform maintenance.\n        Stock Indices trading hours\n\n        MarketWideImpact:\n        - Use only when the event affects the entire exchange or market infrastructure across segments.\n        - Examples:\n        Exchange-wide system outage.\n        Market-wide trading schedule change.\n        ",
+    "user_input": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "model_options": {
+      "temperature": 0.2
+    },
+    "model_name": "gemma4:e4b-it-qat",
+    "model_result": {
+      "reasoning": "The provided information details a consultation paper from The Stock Exchange of Hong Kong Limited regarding enhancements to the Board Lot Framework in the Hong Kong Securities Market. This framework enhancement specifically targets Equities 1 and Real Estate Investment Trusts (REITs). Since this proposal affects specific asset classes within the market, namely equities and REITs, it falls under SegmentAssetLevelImpact.",
+      "category": "SegmentAssetLevelImpact",
+      "category1": "SpecificSecurityImpact",
+      "category2": "MarketWideImpact",
+      "category3": "SegmentAssetLevelImpact",
+      "category4": "SegmentAssetLevelImpact"
+    },
+    "model_thought": "The user wants me to classify a provided text into one of three subcategories: 'SpecificSecurityImpact', 'SegmentAssetLevelImpact', or 'MarketWideImpact'.\n\n**Subcategory Definitions:**\n1.  **SpecificSecurityImpact:** Concerns one identified security (stock, bond, ETF, ticker) or a very small named set of securities.\n2.  **SegmentAssetLevelImpact:** Concerns a market segment, asset class, trading channel, participant type, or operational subsystem affecting many securities. DO NOT use if the notice impacts systems used by all standard securities.\n3.  **MarketWideImpact:** Affect the entire exchange or market infrastructure across segments.\n\n**Analysis of the Input Data:**\n*   **Event:** Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market (HKEX).\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Changes:** Reduction of board lot value floor/ceiling, introduction of standardized board lot units.\n*   **Exclusions:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (Chapter 21), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.\n\n**Evaluation against Subcategories:**\n\n1.  **SpecificSecurityImpact?** No. The changes apply to broad categories of securities (Equities 1 and REITs) rather than a single ticker or a very small named set.\n2.  **MarketWideImpact?** Does it affect the entire exchange infrastructure across all segments? No. It specifically excludes many types of products (ETPs, Structured Products, debt securities, etc.). Therefore, it does not impact *all* standard securities/infrastructure universally.\n3.  **SegmentAssetLevelImpact?** Yes. The changes target specific asset classes and market segments: Equities 1 and REITs. It affects the operational framework (board lot structure) for these groups of securities, which is a segment-level change affecting many securities within those defined categories, but not all securities on the exchange.\n\n**Conclusion:**\nThe event concerns enhancements to the board lot framework specifically for \"Equities 1\" and \"Real Estate Investment Trusts (REITs)\". These are market segments/asset classes, making 'SegmentAssetLevelImpact' the most appropriate choice.",
+    "model_load_duration_secs": 0.282394881,
+    "prompt_token_count": 854,
+    "prompt_eval_duration_secs": 0.036227,
+    "response_tokens_per_second": 124.75361161705631,
+    "success": true,
+    "error_message": null
+  },
+  "0x460c9cd282338e8e": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "460c9cd282338e8e",
+    "data_type": "EvalResult",
+    "eval_name": "RepeatedCategoriesConsistencyEvals",
+    "eval_success": true,
+    "passed": false,
+    "score": 0.6,
+    "feedback": "Not all categories returned are the same. Occurence rate = 0.6",
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "460c9cd282338e8e",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0xfe650e934531684c": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "fe650e934531684c",
+    "data_type": "EvalResult",
+    "eval_name": "CategoriesModelThoughtConsistencyEvals",
+    "eval_success": true,
+    "passed": true,
+    "score": 1,
+    "feedback": null,
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "fe650e934531684c",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0xbfbb2b21a4389b4e": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "bfbb2b21a4389b4e",
+    "chain_name": "TopicBucketing",
+    "input_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "output_data": {
+      "category": "SegmentAssetLevelImpact"
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "bfbb2b21a4389b4e",
+      "session_id": "20260609_200623"
+    },
+    "history": [],
+    "evaluations": [
+      {
+        "eval_name": "RepeatedCategoriesConsistencyEvals",
+        "eval_success": true,
+        "passed": false,
+        "score": 0.6,
+        "feedback": "Not all categories returned are the same. Occurence rate = 0.6",
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "460c9cd282338e8e",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      },
+      {
+        "eval_name": "CategoriesModelThoughtConsistencyEvals",
+        "eval_success": true,
+        "passed": true,
+        "score": 1,
+        "feedback": null,
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "fe650e934531684c",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      }
+    ],
+    "success": true,
+    "error_message": null
+  },
+  "0x22964a0bdad28695": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "22964a0bdad28695",
+    "data_type": "LLMResult",
+    "system_prompt": "\n        You are in charge of a trading system and are only interested in the area of MarketWideBoardLotSizeFrameworkChanges.\n\n        Read the data provided by the user and determine if it requires you to take any significant action in and only in the area of MarketWideBoardLotSizeFrameworkChanges. Categorize the relevance of the area into one of these levels: \"High\", \"Medium\", or \"Low\".\n        Rely only on the data provided by the user. \n\n        For example, for a topic IPAddressChangesbytheExchange, examine if the exchange is changing any network IP addresses that would require adjustments to your own trading system's IP addresses setup, assign \"High\" if the answer is yes.\n        \n        Think before answering, explain your reasoning step by step. Ensure the final subcategory in JSON is consistent with the reasoning.\n\n        In your reasoning:\n        - Explain only the evidence supporting the selected category.\n        - Do not discuss categories that were not selected.\n        - Use affirmative language.\n        \n\nHere are some examples of what kind of events would fall under the category of MarketWideBoardLotSizeFrameworkChanges:\nChanges to the board lot size framework that apply to a large set of securities on the exchange. Introduction of new board lot sizes or tiering.\n\n",
+    "user_input": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "model_options": {
+      "temperature": 0.5
+    },
+    "model_name": "gemma4:e4b-it-qat",
+    "model_result": {
+      "reasoning": "The provided data details a consultation paper from The Stock Exchange of Hong Kong Limited (HKEX) proposing significant changes to the board lot size framework in the Hong Kong Securities Market. Specifically, it proposes reducing the board lot value floor guidance from HK$2,000 to HK$1,000, introducing a board lot value ceiling at HK$50,000, and standardizing board lot units to eight specific share quantities (1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares). These proposed changes directly relate to the introduction of new board lot sizes or tiering for Equities 1 and Real Estate Investment Trusts (REITs), which aligns with the definition of MarketWideBoardLotSizeFrameworkChanges.",
+      "Relevance": "High",
+      "Relevance1": "High",
+      "Relevance2": "Medium",
+      "Relevance3": "Low",
+      "Relevance4": "Low"
+    },
+    "model_thought": "The user wants me to analyze a provided text regarding market changes and determine its relevance to the category \"MarketWideBoardLotSizeFrameworkChanges\".\n\n    - **Category:** MarketWideBoardLotSizeFrameworkChanges (Focus: Changes to board lot size framework applicable to a large set of securities, new/tiered sizes).\n    - **Input Data:** A consultation paper from HKEX proposing changes to the board lot framework for Equities 1 and REITs in the Hong Kong Securities Market.\n    - **Goal:** Categorize relevance as \"High\", \"Medium\", or \"Low\" and provide step-by-step reasoning based *only* on the provided evidence.\n\n**Analysis of Evidence against Category Definition:**\nThe definition states: \"Changes to the board lot size framework that apply to a large set of securities on the exchange. Introduction of new board lot sizes or tiering.\"\n\n1.  **Scope of Application:** The proposal applies to \"Equities 1 and Real Estate Investment Trusts (REITs).\" This is a large set of securities.\n2.  **Proposed Changes/Framework Components:**\n    *   Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    *   Introduction of board lot value ceiling guidance at HK$50,000.\n    *   Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n\nThese proposed changes directly involve modifications (reduction of floor/ceiling) and standardization (introduction of eight standardized options) to the board lot size framework for a wide range of securities. This perfectly matches the description of \"MarketWideBoardLotSizeFrameworkChanges.\"\n\n**Conclusion:** The relevance is High.\n\n**Structuring the Output:**\n1.  Step-by-step reasoning focusing on evidence supporting \"High\".\n2.  Final JSON output with category and subcategory.",
+    "model_load_duration_secs": 0.28425134,
+    "prompt_token_count": 799,
+    "prompt_eval_duration_secs": 0.035761,
+    "response_tokens_per_second": 126.1620514444318,
+    "success": true,
+    "error_message": null
+  },
+  "0x91749b176f80ab7a": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "91749b176f80ab7a",
+    "data_type": "EvalResult",
+    "eval_name": "RepeatedCategoriesConsistencyEvals",
+    "eval_success": true,
+    "passed": false,
+    "score": 0.4,
+    "feedback": "Not all categories returned are the same. Occurence rate = 0.4",
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "91749b176f80ab7a",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0x2d6399493043970e": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "2d6399493043970e",
+    "data_type": "EvalResult",
+    "eval_name": "CategoriesModelThoughtConsistencyEvals",
+    "eval_success": true,
+    "passed": true,
+    "score": 1,
+    "feedback": null,
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "2d6399493043970e",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0x874cedbb86b24abf": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "874cedbb86b24abf",
+    "chain_name": "SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges]",
+    "input_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High"
+      }
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "874cedbb86b24abf",
+      "session_id": "20260609_200623"
+    },
+    "history": [],
+    "evaluations": [
+      {
+        "eval_name": "RepeatedCategoriesConsistencyEvals",
+        "eval_success": true,
+        "passed": false,
+        "score": 0.4,
+        "feedback": "Not all categories returned are the same. Occurence rate = 0.4",
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "91749b176f80ab7a",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      },
+      {
+        "eval_name": "CategoriesModelThoughtConsistencyEvals",
+        "eval_success": true,
+        "passed": true,
+        "score": 1,
+        "feedback": null,
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "2d6399493043970e",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      }
+    ],
+    "success": true,
+    "error_message": null
+  },
+  "0x368d7c9fecdd1509": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "368d7c9fecdd1509",
+    "data_type": "LLMResult",
+    "system_prompt": "\n        You are in charge of a trading system and are only interested in the area of MockDRDisasterRecoverySession.\n\n        Read the data provided by the user and determine if it requires you to take any significant action in and only in the area of MockDRDisasterRecoverySession. Categorize the relevance of the area into one of these levels: \"High\", \"Medium\", or \"Low\".\n        Rely only on the data provided by the user. \n\n        For example, for a topic IPAddressChangesbytheExchange, examine if the exchange is changing any network IP addresses that would require adjustments to your own trading system's IP addresses setup, assign \"High\" if the answer is yes.\n        \n        Think before answering, explain your reasoning step by step. Ensure the final subcategory in JSON is consistent with the reasoning.\n\n        In your reasoning:\n        - Explain only the evidence supporting the selected category.\n        - Do not discuss categories that were not selected.\n        - Use affirmative language.\n        \n\nHere are some examples of what kind of events would fall under the category of MockDRDisasterRecoverySession:\nRelated to mock disaster recovery sessions conducted by the exchange. Any special sessions that are out of the ordinary schedule, or changes to the usual DR drill procedures.\n\n",
+    "user_input": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "model_options": {
+      "temperature": 0.5
+    },
+    "model_name": "gemma4:e4b-it-qat",
+    "model_result": {
+      "reasoning": "The provided data details a consultation paper regarding enhancements to the Board Lot Framework in the Hong Kong Securities Market. This proposal focuses on adjusting board lot value floors, introducing ceilings, and standardizing share units for Equities 1 and REITs. These changes relate to market structure and trading mechanisms, not mock disaster recovery sessions or procedures.",
+      "Relevance": "Low",
+      "Relevance1": "Low",
+      "Relevance2": "Low",
+      "Relevance3": "Low",
+      "Relevance4": "Low"
+    },
+    "model_thought": "The user wants me to categorize a given event based on its relevance to \"MockDRDisasterRecoverySession\".\n\n**Target Category:** MockDRDisasterRecoverySession (Related to mock disaster recovery sessions conducted by the exchange. Any special sessions that are out of the ordinary schedule, or changes to the usual DR drill procedures.)\n**Relevance Levels:** High, Medium, Low.\n\n**Event Analysis:**\nThe event is titled \"Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market.\"\nIt proposes changes to board lot value floors/ceilings and standardized share units for Equities 1 and REITs.\nThis is a regulatory consultation regarding market structure enhancements (board lots).\n\n**Check against MockDRDisasterRecoverySession criteria:**\nDoes this event relate to mock disaster recovery sessions, unusual DR schedules, or changes to DR drill procedures?\nNo. The content focuses entirely on modifying the trading framework (board lot sizes and values) for specific security types in the Hong Kong market.\n\n**Conclusion:**\nThe topic is unrelated to Disaster Recovery Sessions. Therefore, the relevance level is Low.",
+    "model_load_duration_secs": 0.281101063,
+    "prompt_token_count": 798,
+    "prompt_eval_duration_secs": 0.037214,
+    "response_tokens_per_second": 118.00055750988041,
+    "success": true,
+    "error_message": null
+  },
+  "0xa403cebfb499519f": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "a403cebfb499519f",
+    "data_type": "EvalResult",
+    "eval_name": "RepeatedCategoriesConsistencyEvals",
+    "eval_success": true,
+    "passed": true,
+    "score": 1,
+    "feedback": null,
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "a403cebfb499519f",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0xab9f92e8d0b015b7": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "ab9f92e8d0b015b7",
+    "data_type": "EvalResult",
+    "eval_name": "CategoriesModelThoughtConsistencyEvals",
+    "eval_success": true,
+    "passed": true,
+    "score": 1,
+    "feedback": null,
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "ab9f92e8d0b015b7",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0x05fcd1dbb9dd9337": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "05fcd1dbb9dd9337",
+    "chain_name": "SingleTradingTopicCategorisation[MockDRDisasterRecoverySession]",
+    "input_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "output_data": {
+      "tags": {
+        "MockDRDisasterRecoverySession": "Low"
+      }
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "05fcd1dbb9dd9337",
+      "session_id": "20260609_200623"
+    },
+    "history": [],
+    "evaluations": [
+      {
+        "eval_name": "RepeatedCategoriesConsistencyEvals",
+        "eval_success": true,
+        "passed": true,
+        "score": 1,
+        "feedback": null,
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "a403cebfb499519f",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      },
+      {
+        "eval_name": "CategoriesModelThoughtConsistencyEvals",
+        "eval_success": true,
+        "passed": true,
+        "score": 1,
+        "feedback": null,
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "ab9f92e8d0b015b7",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      }
+    ],
+    "success": true,
+    "error_message": null
+  },
+  "0x374a899a25f8a0d0": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "374a899a25f8a0d0",
+    "chain_name": "TradingTopicsCategorisation",
+    "input_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High",
+        "MockDRDisasterRecoverySession": "Low"
+      },
+      "summary": "No summary produced.",
+      "effectivedate": "NONE"
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "374a899a25f8a0d0",
+      "session_id": "20260609_200623"
+    },
+    "history": [
+      {
+        "chain_name": "SingleTradingTopicCategorisation[MarketWideBoardLotSizeFrameworkChanges]",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "874cedbb86b24abf",
+        "success": true
+      },
+      {
+        "chain_name": "SingleTradingTopicCategorisation[MockDRDisasterRecoverySession]",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "05fcd1dbb9dd9337",
+        "success": true
+      }
+    ],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  },
+  "0xf61431b00c80abe8": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "f61431b00c80abe8",
+    "data_type": "LLMResult",
+    "system_prompt": "\n        You are in charge of a trading system and are only interested in information that require you to make changes to your system.\n\n        Reply with the effective date of the change if you are very confident of the effective date of the change in the YYYY-MM-DD format. If the data is unclear, leave the effective date as \"NONE\".\n\n        Add a concise and comprehensive summary of the data that should cover all key points providing relevant details with regards to trading, while avoiding any unnecessary information or repetition.\n\n        Think before answering and reply only in the json format.\n        ",
+    "user_input": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "model_options": {
+      "temperature": 0.2
+    },
+    "model_name": "gemma4:e4b-it-qat",
+    "model_result": {
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "model_thought": null,
+    "model_load_duration_secs": 0.276580116,
+    "prompt_token_count": 642,
+    "prompt_eval_duration_secs": 0.114312,
+    "response_tokens_per_second": 145.05646100719508,
+    "success": true,
+    "error_message": null
+  },
+  "0x0c70bad3f5dcfed5": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "0c70bad3f5dcfed5",
+    "chain_name": "TradingTopicsSummarisation",
+    "input_data": "Title: Consultation on Board Lot Framework Enhancements in the Hong Kong Securities Market. **Key Entities:**\n\n*   **Organization:** The Stock Exchange of Hong Kong Limited (HKEX)\n*   **Consultation Paper Subject:** Board Lot Framework Enhancements in the Hong Kong Securities Market\n*   **Enquiry Contacts:**\n    *   Mr. Ryan Yeung (Tel: 2840 2362, E-mail: ryanyeung@hkex.com.hk)\n    *   Mr. Victor Yip (Tel: 2840 3006, E-mail: victoryip@hkex.com.hk)\n\n**Key Information:**\n\n*   **Publication Date of Consultation Paper:** 18 December 2025\n*   **Purpose:** To propose a new board lot framework to enhance market competitiveness and efficiency in the Hong Kong Securities Market, following recommendations from the Hong Kong Special Administrative Region Government Task Force on Enhancing Stock Market Liquidity.\n*   **Scope of Application:** Equities 1 and Real Estate Investment Trusts (REITs).\n*   **Proposed Framework Components:**\n    1.  Reduction of board lot value floor guidance from HK$2,000 to HK$1,000.\n    2.  Introduction of board lot value ceiling guidance at HK$50,000.\n    3.  Reduction of board lot units to eight standardized options: 1, 50, 100, 500, 1,000, 2,000, 5,000, and 10,000 shares.\n*   **Implementation Phases:**\n    *   **Phase One:** New issuers must comply with all three components; existing issuers only need to comply with the board lot value floor and ceiling guidance.\n    *   **Phase Two:** Existing issuers will be required to adopt one of the standardized board lot units within a specified period after transitioning to uncertificated shareholding under the Uncertificated Securities Market initiative.\n*   **Consultation Period Closure:** 12 March 2026 (Thursday).\n\n**Exclusions from Proposal:** Exchange Traded Products, Structured Products, debt securities, equity warrants, investment companies (listed under Chapter 21 of the Listing Rules), Nasdaq -Amex Pilot Program securities, Special Purpose Acquisition Company shares and warrants.",
+    "output_data": {
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "0c70bad3f5dcfed5",
+      "session_id": "20260609_200623"
+    },
+    "history": [],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  },
+  "0x052cbec74e67ec05": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "052cbec74e67ec05",
+    "data_type": "EvalResult",
+    "eval_name": "ResultDataValidationEvals",
+    "eval_success": true,
+    "passed": true,
+    "score": 1,
+    "feedback": null,
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "052cbec74e67ec05",
+      "session_id": "20260609_200623"
+    },
+    "eval_children": [],
+    "eval_intermediate_results": null,
+    "error_message": null
+  },
+  "0xe6665776f49add00": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "e6665776f49add00",
+    "chain_name": "TradingTopicsDistiller",
+    "input_data": "1 documents",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High",
+        "MockDRDisasterRecoverySession": "Low"
+      },
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "metadata": {
+      "TradingTopicsCategorisation": {
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "374a899a25f8a0d0",
+        "session_id": "20260609_200623"
+      },
+      "TradingTopicsSummarisation": {
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "0c70bad3f5dcfed5",
+        "session_id": "20260609_200623"
+      },
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "e6665776f49add00",
+      "session_id": "20260609_200623"
+    },
+    "history": [
+      {
+        "chain_name": "TradingTopicsCategorisation",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "374a899a25f8a0d0",
+        "success": true
+      },
+      {
+        "chain_name": "TradingTopicsSummarisation",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "0c70bad3f5dcfed5",
+        "success": true
+      }
+    ],
+    "evaluations": [
+      {
+        "eval_name": "ResultDataValidationEvals",
+        "eval_success": true,
+        "passed": true,
+        "score": 1,
+        "feedback": null,
+        "metadata": {
+          "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+          "span_id": "052cbec74e67ec05",
+          "session_id": "20260609_200623"
+        },
+        "eval_children": [],
+        "eval_intermediate_results": null,
+        "error_message": null
+      }
+    ],
+    "success": true,
+    "error_message": null
+  },
+  "0xdcd12e882db92df6": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "dcd12e882db92df6",
+    "chain_name": "ImpactRouter",
+    "input_data": "1 documents",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High",
+        "MockDRDisasterRecoverySession": "Low"
+      },
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "metadata": {
+      "routed_via_category": "SegmentAssetLevelImpact",
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "dcd12e882db92df6",
+      "session_id": "20260609_200623"
+    },
+    "history": [
+      {
+        "chain_name": "TradingTopicsDistiller",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "e6665776f49add00",
+        "success": true
+      }
+    ],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  },
+  "0xb7215e3ca5043b3b": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "b7215e3ca5043b3b",
+    "chain_name": "SequentialChain",
+    "input_data": "1 initial documents.",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High",
+        "MockDRDisasterRecoverySession": "Low"
+      },
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "metadata": {
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "b7215e3ca5043b3b",
+      "session_id": "20260609_200623"
+    },
+    "history": [
+      {
+        "chain_name": "RefineSummarizeChain",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "21f1f36f18e338ac",
+        "success": true
+      },
+      {
+        "chain_name": "ImpactRouter",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "dcd12e882db92df6",
+        "success": true
+      }
+    ],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  },
+  "0xe004805feb28b423": {
+    "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+    "span_id": "e004805feb28b423",
+    "chain_name": "Tagging",
+    "input_data": "1 documents",
+    "output_data": {
+      "tags": {
+        "MarketWideBoardLotSizeFrameworkChanges": "High",
+        "MockDRDisasterRecoverySession": "Low"
+      },
+      "summary": "HKEX is consulting on enhancing the Board Lot Framework for Equities 1 and REITs to boost market competitiveness. Key proposals include lowering the board lot value floor from HK$2,000 to HK$1,000, introducing a ceiling of HK$50,000, and standardizing units to eight options (1, 50, 100, 500, 1,000, 2,000, 5,000, 10,000 shares). Phase One applies the floor/ceiling guidance to existing issuers while new issuers adopt all components. Phase Two mandates standardized units for existing issuers post-transition to uncertificated shareholding. The consultation closes on March 12, 2026.",
+      "effectivedate": "2026-03-12"
+    },
+    "metadata": {
+      "routed_via_bool": "LongText",
+      "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+      "span_id": "e004805feb28b423",
+      "session_id": "20260609_200623"
+    },
+    "history": [
+      {
+        "chain_name": "SequentialChain",
+        "trace_id": "6a49c0d6a4ac12f1f44d0c064897dd90",
+        "span_id": "b7215e3ca5043b3b",
+        "success": true
+      }
+    ],
+    "evaluations": [],
+    "success": true,
+    "error_message": null
+  }
+};
+            
+            function attachListener() {
+                const plotEl = document.getElementById('plotly-gantt');
+                
+                // Check if Plotly and the element are ready
+                if (plotEl && plotEl.on) {
+                    plotEl.on('plotly_click', function(data) {
+                        const spanId = data.points[0].customdata[0];
+                        const details = spanDetails[spanId];
+                        const output = document.getElementById('details-output');
+                        const instruction = document.getElementById('instruction-text');
+
+                        if (details) {
+                            output.textContent = JSON.stringify(details, null, 2);
+                            instruction.textContent = "Viewing details for Span: " + spanId;
+                        } else {
+                            instruction.textContent = "Span ID: " + spanId + " (No file found)";
+                        }
+                    });
+                } else {
+                    setTimeout(attachListener, 100);
+                }
+            }
+            attachListener();
+        </script>
+    </body>
+    </html>
+    
