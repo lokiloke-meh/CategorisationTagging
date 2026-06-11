@@ -1,0 +1,8 @@
+venv/
+*circulars/
+sec_filings/
+ingesters/
+logs/
+*.pyc
+.vscode/
+test*
