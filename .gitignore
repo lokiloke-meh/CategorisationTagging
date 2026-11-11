@@ -1,8 +1,7 @@
 venv/
-*circulars/
 sec_filings/
-ingesters/
+# ingesters/
+data_store/
 logs/
 *.pyc
 .vscode/
-test*

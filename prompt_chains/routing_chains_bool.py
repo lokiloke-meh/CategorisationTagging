@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import Optional
 from dataclasses import dataclass
+
 from opentelemetry import trace
-from prompt_chains.base_chains import Document, BaseChain, ChainResult
+
+from prompt_chains.base_chains import BaseChain, ChainResult, Document
 
 
 # ==========================================
@@ -10,9 +11,10 @@ from prompt_chains.base_chains import Document, BaseChain, ChainResult
 # ==========================================
 class BoolRoutingCondition(ABC):
     """
-    The interface for all routing rules. 
+    The interface for all routing rules.
     Returns True if the Document matches the criteria, False otherwise.
     """
+
     @abstractmethod
     def evaluate(self, docs: list[Document]) -> bool:
         """
@@ -24,7 +26,7 @@ class BoolRoutingCondition(ABC):
         Returns:
             bool: True if criteria are met, False otherwise.
         """
-        pass
+
 
 # ==========================================
 # ROUTING STRATEGIES
@@ -35,7 +37,8 @@ class TextLengthCondition(BoolRoutingCondition):
     Often used to decide if a document is long enough to require summarization
     before further processing.
     """
-    def __init__(self, min_chars: int = 0, max_chars: float = float('inf')):
+
+    def __init__(self, min_chars: int = 0, max_chars: float = float("inf")):
         self.min_chars = min_chars
         self.max_chars = max_chars
 
@@ -43,11 +46,13 @@ class TextLengthCondition(BoolRoutingCondition):
         total_length = sum(len(doc.page_content) for doc in docs)
         return self.min_chars <= total_length < self.max_chars
 
+
 class KeywordCondition(BoolRoutingCondition):
     """
     Routes based on whether a specific keyword exists in the text.
     Case-insensitive search across all document content.
     """
+
     def __init__(self, keyword: str):
         self.keyword = keyword.lower()
 
@@ -63,12 +68,13 @@ class KeywordCondition(BoolRoutingCondition):
 class BoolRoute:
     """
     A container mapping a condition to a specific chain.
-    
+
     Attributes:
         name: A human-readable identifier for the route (used in logs).
         condition: The BoolRoutingCondition to evaluate.
         destination_chain: The BaseChain to execute if the condition is met.
     """
+
     name: str
     condition: BoolRoutingCondition
     destination_chain: BaseChain
@@ -80,28 +86,34 @@ class BoolRoute:
 class BoolRouterChain(BaseChain):
     """
     A branching chain that selects one execution path from multiple options.
-    
-    It evaluates routes top-to-bottom. The first route whose condition returns True 
-    is executed. If any condition fails to evaluate correctly, the entire chain 
+
+    It evaluates routes top-to-bottom. The first route whose condition returns True
+    is executed. If any condition fails to evaluate correctly, the entire chain
     fails immediately to prevent unpredictable behavior in sequential pipelines.
     """
-    def __init__(self, routes: list[BoolRoute], default_chain: Optional[BaseChain] = None, custom_name: str = "BoolRouterChain"):
+
+    def __init__(
+        self,
+        routes: list[BoolRoute],
+        default_chain: BaseChain | None = None,
+        custom_name: str = "BoolRouterChain",
+    ):
         super().__init__()
         self.routes = routes
         self.default_chain = default_chain
         self._custom_name = custom_name
 
     @property
-    def name(self): 
+    def name(self):
         return self._custom_name
 
     def _invoke(self, docs: list[Document]) -> ChainResult:
         """
         Determines the execution path by evaluating conditions.
-        
-        If a condition is met, the destination chain is invoked. 
+
+        If a condition is met, the destination chain is invoked.
         If no condition is met, the default_chain is used (if provided).
-        If errors occurred in all routes and no default_chain is provided, 
+        If errors occurred in all routes and no default_chain is provided,
         returns a critical failure.
         """
         selected_route_name = None
@@ -112,7 +124,7 @@ class BoolRouterChain(BaseChain):
         for route in self.routes:
             try:
                 condition_result = route.condition.evaluate(docs)
-                
+
                 if not isinstance(condition_result, bool):
                     error_msg = f"BoolRoutingCondition for '{route.name}' returned {type(condition_result)} instead of bool."
                     evaluation_errors.append(error_msg)
@@ -122,10 +134,12 @@ class BoolRouterChain(BaseChain):
                     selected_chain = route.destination_chain
                     selected_route_name = route.name
                     break
-            
-            except Exception as e:
+
+            except Exception as e:  # noqa: BLE001
                 trace.get_current_span().record_exception(e)
-                error_msg = f"Error evaluating BoolRoutingCondition for '{route.name}': {e}"
+                error_msg = (
+                    f"Error evaluating BoolRoutingCondition for '{route.name}': {e}"
+                )
                 evaluation_errors.append(error_msg)
                 continue
 
@@ -139,31 +153,35 @@ class BoolRouterChain(BaseChain):
                     input_data=f"{len(docs)} documents",
                     output_data=None,
                     success=False,
-                    error_message=error_msg
+                    error_message=error_msg,
                 )
 
             if self.default_chain:
                 selected_chain = self.default_chain
                 selected_route_name = "default_route"
             else:
-                error_msg = "No routing conditions were met, and no default_chain was provided."
+                error_msg = (
+                    "No routing conditions were met, and no default_chain was provided."
+                )
                 return ChainResult(
                     chain_name=self.name,
                     input_data=f"{len(docs)} documents",
                     output_data=None,
                     success=False,
-                    error_message=error_msg
+                    error_message=error_msg,
                 )
 
-        print(f" -> Router determined path: [{selected_route_name}] -> executing {selected_chain.name}...")
+        print(
+            f" -> Router determined path: [{selected_route_name}] -> executing {selected_chain.name}..."
+        )
 
         # Execute the selected chain
         result = selected_chain.invoke(docs)
 
         # Wrap the result, injecting routing metadata for the logs
         result.metadata["routed_via_bool"] = selected_route_name
-        
-        # We wrap this in a new ChainResult so the overarching history graph 
+
+        # We wrap this in a new ChainResult so the overarching history graph
         # clearly shows that a Router was used, and which path it took.
         return ChainResult(
             chain_name=self.name,
@@ -172,5 +190,7 @@ class BoolRouterChain(BaseChain):
             success=result.success,
             error_message=result.error_message,
             metadata={"routed_via_bool": selected_route_name},
-            history=[result]  # The executed chain's result becomes the history of the router!
+            history=[
+                result
+            ],  # The executed chain's result becomes the history of the router!
         )

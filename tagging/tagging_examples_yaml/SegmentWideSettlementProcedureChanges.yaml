@@ -1,0 +1,25 @@
+tag: SegmentWideSettlementProcedureChanges
+examples: |
+  ### Segment-Level Settlement Procedure Changes
+
+  **Definition**
+
+  Use this category only when the primary subject of the document is a change to the process by which trades or related payment and securities obligations are settled within a defined market segment, clearing service, or settlement system.
+
+  Qualifying changes may include:
+  - Settlement cycles, deadlines, or cut-off times.
+  - Securities or cash delivery and payment processes.
+  - Settlement instructions, matching, confirmation, or reconciliation procedures.
+  - Settlement eligibility or processing rules that directly determine how settlement obligations are completed.
+  - Segment-specific changes to settlement processing, delivery-versus-payment, or settlement finality.
+
+  **Do not classify an event here solely because it mentions:**
+  - Clearing houses, clearing participants, or settlement systems.
+  - Margin requirements, margin calls, or collateral deposits.
+  - New eligible collateral assets or changes to collateral valuation.
+  - Trading sessions, after-hours trading, or market operations.
+  - Clearing-house rules or procedures that do not directly change the settlement process.
+
+  **Decision test**
+
+  Identify the exact settlement step that has changed. If the document does not establish a change to the process for fulfilling settlement obligations, do not assign this category merely because it contains clearing, collateral, or margin terminology.

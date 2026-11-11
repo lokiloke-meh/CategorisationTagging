@@ -1,0 +1,16 @@
+tag: TradingHoursAmendment
+examples: |
+  ### Trading Hours Amendments
+
+  Use this category when the primary subject of the document is an amendment to the trading hours or trading-session schedule of the exchange, whether the change applies to a specific product, a group of product segments, or the market as a whole. Amendments may be temporary or permanent.
+
+  Qualifying changes may include:
+  - Extending, shortening, advancing, delaying, or otherwise changing trading start times, end times, opening times, or closing times.
+  - Introducing, removing, or revising trading sessions, session breaks, or trading periods.
+  - Temporarily adjusting trading hours for specific products, product segments, or the entire market, including special schedules for holidays or exceptional circumstances.
+  - Permanently revising standard trading hours or session structures for particular products, multiple market segments, or the exchange as a whole.
+  - Changing the applicability of trading schedules across product categories, market segments, or trading channels.
+
+  Do not classify a document under this category solely because it mentions trading hours, trading sessions, products, or market operations. Exclude changes that affect only clearing or settlement service hours without changing trading hours, routine system maintenance, disaster recovery drills, and market rehearsals that do not amend the applicable trading schedule.
+
+  **Decision test:** Does the document explicitly announce, introduce, revise, extend, shorten, suspend, or temporarily adjust the times or schedule during which trading is permitted on the exchange? If not, do not assign this category merely because trading hours or sessions are mentioned.

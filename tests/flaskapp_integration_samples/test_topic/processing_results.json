@@ -1,0 +1,98 @@
+{
+    "5307f68d4ddd582102780a78ad1e4cd44003dd89e401ad6600726fe268b6e991": {
+        "8a59e86352b0fb05": {
+            "pipeline_id": "8a59e86352b0fb05",
+            "processed_timestamp": "2026-10-21T16:04:26.442978+00:00",
+            "tag_results": {
+                "OrderInfrastructureChanges": {
+                    "output_data": {
+                        "OrderInfrastructureChanges": "Low"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "14aa273c6efc4e03799901d210399378",
+                        "span_id": "46a80ee68648725d",
+                        "session_id": "20261021_225603"
+                    },
+                    "success": true,
+                    "error_message": null
+                },
+                "AllCorporateActions": {
+                    "output_data": {
+                        "AllCorporateActions": "High"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "14aa273c6efc4e03799901d210399378",
+                        "span_id": "46a80ee68648725d",
+                        "session_id": "20261021_225603"
+                    },
+                    "success": true,
+                    "error_message": null
+                },
+                "AccountMaintenance": {
+                    "output_data": {
+                        "AccountMaintenance": "Medium"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "14aa273c6efc4e03799901d210399378",
+                        "span_id": "46a80ee68648725d",
+                        "session_id": "20261021_225603"
+                    },
+                    "success": true,
+                    "error_message": null
+                }
+            },
+            "summary": "Bybit is terminating support for the BounceBit network and migrating BB tokens to the BNB Chain (BEP-20) at a 1:1 ratio. Deposits and withdrawals on the native BounceBit network are suspended. Deposits and withdrawals via BNB Chain are scheduled to reopen on September 4, 2026, at 8 AM UTC. The new BEP-20 smart contract address is 0xe0620aBeA429A66Ba69d9a0cdE9aB93dc15bB9c4. Token trading remains unaffected by this migration.",
+            "effectivedate": "2026-09-04"
+        },
+        "55453482ccda74ba": {
+            "pipeline_id": "55453482ccda74ba",
+            "processed_timestamp": "2026-10-24T02:13:04.014028+00:00",
+            "tag_results": {
+                "OrderInfrastructureChanges": {
+                    "output_data": {
+                        "OrderInfrastructureChanges": "Low"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+                        "span_id": "aaa7262c0ff8977b",
+                        "session_id": "20261024_085305"
+                    },
+                    "success": true,
+                    "error_message": null
+                },
+                "AllCorporateActions": {
+                    "output_data": {
+                        "AllCorporateActions": "High"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+                        "span_id": "aaa7262c0ff8977b",
+                        "session_id": "20261024_085305"
+                    },
+                    "success": true,
+                    "error_message": null
+                },
+                "AccountMaintenance": {
+                    "output_data": {
+                        "AccountMaintenance": "Medium"
+                    },
+                    "metadata": {
+                        "routed_via_bool": "default_route",
+                        "trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+                        "span_id": "aaa7262c0ff8977b",
+                        "session_id": "20261024_085305"
+                    },
+                    "success": true,
+                    "error_message": null
+                }
+            },
+            "summary": "Bybit is terminating support for the BounceBit network and migrating BB tokens to the BNB Chain (BEP-20) at a 1:1 ratio. Deposits and withdrawals on the native BounceBit network are suspended, while deposits and withdrawals via BNB Chain (BEP-20) are scheduled to reopen on September 4, 2026, at 8 AM UTC. The new BB (BEP-20) smart contract address is 0xe0620aBeA429A66Ba69d9a0cdE9aB93dc15bB9c4. Trading activities for BB will remain unaffected during this transition.",
+            "effectivedate": "2026-09-04"
+        }
+    }
+}

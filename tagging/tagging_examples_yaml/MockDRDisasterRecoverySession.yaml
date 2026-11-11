@@ -1,0 +1,16 @@
+tag: MockDRDisasterRecoverySession
+examples: |
+  ### Mock Disaster Recovery Sessions and DR Infrastructure Operations
+
+  Use this category for:
+  - Mock trading sessions, special market rehearsals, and exchange operational drills, including those preparing for new trading hours, system implementations, or operational changes.
+  - DR exercises, planned failovers, switchovers, recovery tests, and rehearsals involving trading, clearing, settlement, or connectivity systems.
+  - Normal trading sessions conducted using DR sites, backup environments, or recovery systems.
+  - Related schedules, participant instructions, operational arrangements, postponements, cancellations, and completion notices.
+
+  Include mock trading sessions conducted outside normal trading hours, including weekends and public holidays, **even when DR infrastructure is not involved**.
+
+  Exclude routine maintenance, ordinary system upgrades, live incident notifications, and general DR policies that do not concern a qualifying exercise, rehearsal, or DR operation.
+
+  **Decision test:** 
+  Does the document announce, describe, or organize a mock trading session, market rehearsal, operational drill, DR exercise, or exchange service operating from DR infrastructure? If yes, classify it here regardless of whether the primary purpose is DR testing, a new trading schedule, or another operational change.

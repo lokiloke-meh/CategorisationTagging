@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}Report Dashboard - Notice & Tagging Visualizer{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Filter Control Sidebar / Panel -->
+    <div class="col-12 col-xl-4 col-xxl-3">
+        <div class="card shadow-sm border-0 filter-card">
+            <div class="card-header bg-white py-3 border-bottom d-flex align-items-center justify-content-between">
+                <h5 class="card-title mb-0 fw-bold text-dark d-flex align-items-center gap-2">
+                    <i class="bi bi-funnel-fill text-primary"></i> Filter Criteria
+                </h5>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Level: High</span>
+            </div>
+            <div class="card-body p-4">
+                <form id="report-filter-form" method="GET" action="{{ url_for('index') }}">
+                    <!-- Topics Selection -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold text-dark mb-0">
+                                <i class="bi bi-collection text-secondary me-1"></i> Topics
+                            </label>
+                            <div class="d-flex gap-1 mb-2">
+                                <button type="button" class="btn btn-outline-secondary py-0 flex-grow-1 text-nowrap" id="btn-select-all-topics" style="font-size: 0.75rem;">All</button>
+                                <button type="button" class="btn btn-outline-secondary py-0 flex-grow-1 text-nowrap" id="btn-clear-topics" style="font-size: 0.75rem;">Clear</button>
+                            </div>
+                        </div>
+                        <div class="topic-list border rounded p-2 bg-light-subtle resizable-panel" data-resize-target="topics" style="max-height: 400px; overflow-y: auto; height: 180px;">
+                            {% for topic in available_topics %}
+                            <div class="form-check py-1">
+                                <input class="form-check-input topic-checkbox" type="checkbox" name="topics" value="{{ topic.name }}" id="topic-{{ loop.index }}"
+                                    {% if topic.name in selected_topics %}checked{% endif %}>
+                                <label class="form-check-label d-flex justify-content-between align-items-center w-100" for="topic-{{ loop.index }}">
+                                    <span class="text-truncate font-monospace small" title="{{ topic.name }}">{{ topic.name }}</span>
+                                    {% if topic.has_results %}
+                                    <span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill ms-1" style="font-size: 0.7rem;">{{ topic.article_count }}</span>
+                                    {% else %}
+                                    <span class="badge bg-light text-muted border rounded-pill ms-1" style="font-size: 0.65rem;">empty</span>
+                                    {% endif %}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Resize Handle (between Topics & Tags) -->
+                    <div class="resize-handle" data-resize-pair="topics-tags" title="Drag to resize Topics / Tags">
+                        <span class="resize-lines"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Tags Selection -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold text-dark mb-0">
+                                <i class="bi bi-tags text-secondary me-1"></i> Tags
+                            </label>
+                            <div class="d-flex gap-1 mb-2">
+                                <button type="button" class="btn btn-outline-secondary py-0 flex-grow-1 text-nowrap" id="btn-select-all-tags" style="font-size: 0.75rem;">All</button>
+                                <button type="button" class="btn btn-outline-secondary py-0 flex-grow-1 text-nowrap" id="btn-clear-tags" style="font-size: 0.75rem;">Clear</button>
+                            </div>
+                        </div>
+                        <div id="tags-container" class="tag-list border rounded p-2 bg-light-subtle resizable-panel" data-resize-target="tags" style="max-height: 400px; overflow-y: auto; height: 180px;">
+                            {% if available_tags %}
+                                {% for tag in available_tags %}
+                                <div class="form-check py-1">
+                                    <input class="form-check-input tag-checkbox" type="checkbox" name="tags" value="{{ tag }}" id="tag-{{ loop.index }}"
+                                        {% if not selected_tags or tag in selected_tags %}checked{% endif %}>
+                                    <label class="form-check-label text-truncate small" for="tag-{{ loop.index }}" title="{{ tag }}">
+                                        {{ tag }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted small text-center my-3">Select at least one topic to see available tags.</p>
+                            {% endif %}
+                        </div>
+                        <div class="form-text small text-muted">Unchecked tags are excluded from the report.</div>
+                    </div>
+
+                    <!-- Resize Handle (between Tags & Date) -->
+                    <div class="resize-handle" data-resize-pair="tags-date" title="Drag to resize Tags / Date">
+                        <span class="resize-lines"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Date Since Selection -->
+                    <div class="mb-4">
+                        <label for="since_date" class="form-label fw-bold text-dark mb-1">
+                            <i class="bi bi-calendar3 text-secondary me-1"></i> Date Since (Processed)
+                        </label>
+                        <input type="date" class="form-control form-control-sm" id="since_date" name="since" value="{{ since_date or '' }}">
+                        <div class="form-text small text-muted">Include notices processed on or after this date.</div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary fw-semibold py-2 shadow-sm d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-text-fill"></i> Generate Report
+                        </button>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">Reset Filters</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Articles Display Panel -->
+    <div class="col-12 col-xl-8 col-xxl-9">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 border-bottom d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <h5 class="card-title mb-0 fw-bold text-dark">
+                        <i class="bi bi-journal-check text-success me-1"></i> Report Results
+                    </h5>
+                    {% if has_queried %}
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                        {{ articles|length }} Notice{% if articles|length != 1 %}s{% endif %} Found
+                    </span>
+                    {% endif %}
+                </div>
+                {% if has_queried and articles %}
+                <div class="text-muted small">
+                    Showing notices exceeding threshold (Level: <strong>High</strong>)
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="card-body p-4">
+                {% if not has_queried %}
+                <div class="text-center py-5">
+                    <div class="display-6 text-muted mb-3"><i class="bi bi-search"></i></div>
+                    <h5 class="fw-semibold text-secondary">Ready to Generate Report</h5>
+                    <p class="text-muted col-lg-6 mx-auto">
+                        Select one or more topics, optional tags, and an optional processed date threshold on the left, then click <strong>Generate Report</strong>.
+                    </p>
+                </div>
+                {% elif articles|length == 0 %}
+                <div class="alert alert-warning d-flex align-items-center gap-3 p-4 my-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill fs-3 text-warning"></i>
+                    <div>
+                        <h6 class="alert-heading fw-bold mb-1">No Articles Found</h6>
+                        <p class="mb-0 small">No notices in the selected topics match the criteria with <strong>High</strong> score.</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="article-cards d-flex flex-column gap-3">
+                    {% for article in articles %}
+                    <div class="card article-card border shadow-sm transition-all hover-shadow">
+                        <div class="card-header bg-white border-bottom py-2 px-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <span class="badge bg-dark-subtle text-dark border font-monospace small">
+                                    <i class="bi bi-folder2 me-1"></i>{{ article.topic }}
+                                </span>
+                                {% if article.processed_timestamp %}
+                                <span class="badge bg-light text-secondary border font-monospace small" title="Processed Timestamp">
+                                    <i class="bi bi-clock-history me-1"></i>{{ article.processed_timestamp }}
+                                </span>
+                                {% endif %}
+
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                {% if article.source_url %}
+                                <a href="{{ article.source_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary py-0 px-2" title="Original Notice Source URL" style="font-size: 0.75rem;">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i>Source
+                                </a>
+                                {% endif %}
+                                <a href="{{ url_for('article_detail', topic=article.topic, file_hash=article.file_hash) }}{% if query_string %}?{{ query_string }}{% endif %}" class="btn btn-sm btn-primary py-1 px-3 fw-semibold">
+                                    Inspect <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-3">
+                            <h6 class="card-title fw-bold text-dark mb-2">
+                                <a href="{{ url_for('article_detail', topic=article.topic, file_hash=article.file_hash) }}" class="text-decoration-none text-dark hover-primary">
+                                    {{ article.title }}
+                                </a>
+                            </h6>
+
+                            <!-- Summary preview -->
+                            <p class="card-text text-secondary small mb-3 article-summary">
+                                {{ article.summary }}
+                            </p>
+
+                            <!-- Matched Tags list -->
+                            <div class="d-flex flex-wrap align-items-center gap-2 pt-2 border-top">
+                                <span class="text-muted small fw-semibold me-1"><i class="bi bi-tags-fill me-1"></i>Tags:</span>
+                                {% for tag_item in article.matched_tags %}
+                                <span class="badge {% if tag_item.is_filter_match %}bg-danger-subtle text-danger border border-danger-subtle{% else %}bg-secondary-subtle text-secondary border{% endif %} px-2 py-1 small">
+                                    {{ tag_item.tag }}: <strong class="ms-1">{{ tag_item.score }}</strong>
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-light-subtle border-top py-1 px-3 d-flex justify-content-between align-items-center">
+                            <span class="text-muted font-monospace" style="font-size: 0.75rem;" title="SHA-256 Hash">
+                                Hash: {{ article.file_hash[:16] }}...
+                            </span>
+                            {% if article.trace_id %}
+                            <span class="text-muted font-monospace" style="font-size: 0.75rem;" title="Trace ID">
+                                <i class="bi bi-bezier2 text-primary me-1"></i>Trace: {{ article.trace_id[:12] }}...
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

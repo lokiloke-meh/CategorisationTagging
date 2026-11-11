@@ -1,0 +1,14 @@
+tag: AccountMaintenance
+examples: |
+  ### Account Maintenance
+
+  Use this category for changes to account management, account records, balances, fees, funding, and transfers.
+
+  Include changes affecting:
+  - **Balances and records:** account balances, transaction history, statements, and balance tracking.
+  - **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.
+  - **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.
+  - **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.
+  - **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.
+
+  **Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?

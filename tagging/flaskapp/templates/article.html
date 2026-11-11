@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Notice Details{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column gap-3">
+    <!-- Top Breadcrumb & Actions -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ back_url }}" class="text-decoration-none"><i class="bi bi-arrow-left me-1"></i>Report Dashboard</a></li>
+                <li class="breadcrumb-item active font-monospace" aria-current="page">{{ article.topic }}</li>
+                <li class="breadcrumb-item active text-truncate" style="max-width: 300px;" aria-current="page">{{ article.title }}</li>
+            </ol>
+        </nav>
+        <div class="d-flex gap-2">
+            {% if article.source_url %}
+            <a href="{{ article.source_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-box-arrow-up-right me-1"></i> Original Source
+            </a>
+            {% endif %}
+            <a href="{{ back_url }}" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-house me-1"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Article Metadata Header Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="badge bg-dark font-monospace"><i class="bi bi-folder2 me-1"></i>{{ article.topic }}</span>
+                {% if article.processed_timestamp %}
+                <span class="badge bg-light text-secondary border font-monospace"><i class="bi bi-clock-history me-1"></i>Processed: {{ article.processed_timestamp }}</span>
+                {% endif %}
+
+                {% if article.pipeline_id %}
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle font-monospace"><i class="bi bi-bezier me-1"></i>Pipeline: {{ article.pipeline_id }}</span>
+                {% endif %}
+                {% if article.trace_id %}
+                <span class="badge bg-success-subtle text-success border border-success-subtle font-monospace"><i class="bi bi-activity me-1"></i>Trace: {{ article.trace_id }}</span>
+                {% endif %}
+            </div>
+
+            <h4 class="card-title fw-bold text-dark mb-2">{{ article.title }}</h4>
+
+            {% if article.summary and article.summary != "N/A" %}
+            <p class="card-text text-secondary mb-3">{{ article.summary }}</p>
+            {% endif %}
+
+            <!-- Tag Results Badges -->
+            <div class="d-flex flex-wrap align-items-center gap-2 pt-2 border-top">
+                <span class="small fw-semibold text-muted me-1"><i class="bi bi-tags-fill me-1"></i>Tags:</span>
+                {% for tag_name, tag_info in article.tag_results.items() %}
+                    {% set score = tag_info.output_data[tag_name] if tag_info.output_data else 'N/A' %}
+                    <span class="badge {% if score == 'High' %}bg-danger text-white{% elif score == 'Medium' %}bg-warning text-dark{% else %}bg-secondary text-white{% endif %} px-2 py-1">
+                        {{ tag_name }}: <strong>{{ score }}</strong>
+                    </span>
+                {% endfor %}
+            </div>
+
+            <div class="mt-2 text-muted font-monospace small" style="font-size: 0.75rem;">
+                <span class="me-3"><strong>SHA-256:</strong> {{ article.file_hash }}</span>
+                {% if article.file_path %}
+                <span><strong>Path:</strong> {{ article.file_path }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 Tabs Container -->
+    <div class="card shadow-sm border-0 flex-grow-1 overflow-hidden">
+        <div class="card-header bg-white border-bottom p-0">
+            <ul class="nav nav-tabs px-3 pt-2" id="articleTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-semibold d-flex align-items-center gap-2" id="trace-tab" data-bs-toggle="tab" data-bs-target="#trace-pane" type="button" role="tab" aria-controls="trace-pane" aria-selected="true">
+                        <i class="bi bi-bar-chart-steps text-primary"></i> 1. Trace Gantt Timeline
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-semibold d-flex align-items-center gap-2" id="pipeline-tab" data-bs-toggle="tab" data-bs-target="#pipeline-pane" type="button" role="tab" aria-controls="pipeline-pane" aria-selected="false">
+                        <i class="bi bi-diagram-3 text-info"></i> 2. Pipeline Architecture
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-semibold d-flex align-items-center gap-2" id="raw-tab" data-bs-toggle="tab" data-bs-target="#raw-pane" type="button" role="tab" aria-controls="raw-pane" aria-selected="false">
+                        <i class="bi bi-file-earmark-text text-secondary"></i> 3. Raw Document Content
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content" id="articleTabsContent">
+            <!-- Tab 1: Trace Gantt Timeline -->
+            <div class="tab-pane fade show active position-relative" id="trace-pane" role="tabpanel" aria-labelledby="trace-tab" tabindex="0">
+                <iframe src="{{ url_for('article_trace', topic=article.topic, file_hash=article.file_hash) }}"
+                        class="w-100 border-0"
+                        style="height: 75vh; min-height: 600px;"
+                        title="Trace Timeline"></iframe>
+            </div>
+
+            <!-- Tab 2: Pipeline DAG Architecture -->
+            <div class="tab-pane fade position-relative" id="pipeline-pane" role="tabpanel" aria-labelledby="pipeline-tab" tabindex="0">
+                <div style="padding:4px 8px;background:#f8f9fa;border-bottom:1px solid #e2e8f0;display:flex;justify-content:flex-end;align-items:center;">
+                    {% if article.pipeline_id %}
+                    <a href="{{ url_for('article_pipeline', topic=article.topic, file_hash=article.file_hash) }}" target="_blank" class="btn btn-sm btn-outline-secondary py-0 px-2" style="font-size: 0.75rem;">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Open Full Page
+                    </a>
+                    {% endif %}
+                </div>
+                <iframe src="{{ url_for('article_pipeline', topic=article.topic, file_hash=article.file_hash) }}"
+                        class="w-100 border-0"
+                        style="height: 75vh; min-height: 600px;"
+                        title="Pipeline Architecture"></iframe>
+            </div>
+
+            <!-- Tab 3: Raw Document Content -->
+            <div class="tab-pane fade" id="raw-pane" role="tabpanel" aria-labelledby="raw-tab" tabindex="0">
+                <div class="p-3 bg-light border-bottom d-flex justify-content-between align-items-center">
+                    <span class="small text-muted font-monospace">
+                        <i class="bi bi-file-text me-1"></i>{{ article.file_path or 'Document Raw Content' }}
+                    </span>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2" id="copy-raw-btn" onclick="copyRawContent()" style="font-size: 0.75rem;">
+                        <i class="bi bi-clipboard me-1"></i>Copy Text
+                    </button>
+                </div>
+                <div class="p-4" style="max-height: 75vh; overflow-y: auto;">
+                    {% if article.raw_content %}
+                    <pre id="raw-content-text" class="p-3 bg-light rounded border text-wrap font-monospace" style="white-space: pre-wrap; word-break: break-word; font-size: 0.85rem; line-height: 1.6;">{{ article.raw_content_html|safe }}</pre>
+                    {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="bi bi-file-earmark-x fs-1"></i>
+                        <p class="mt-2">No raw text file content available for this notice.</p>
+                        {% if article.source_url %}
+                        <a href="{{ article.source_url }}" target="_blank" class="btn btn-outline-primary btn-sm">Visit Original Source</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Reload pipeline iframe when its tab becomes visible (iframe loads in hidden tab initially)
+    document.getElementById('articleTabs').addEventListener('shown.bs.tab', (event) => {
+        if (event.target.id === 'pipeline-tab') {
+            const iframe = document.querySelector('#pipeline-pane iframe');
+            if (iframe && !iframe.dataset.reloaded) {
+                iframe.src = iframe.getAttribute('src'); // Force reload with correct dimensions
+                iframe.dataset.reloaded = 'true';
+            }
+        }
+    });
+});
+
+function copyRawContent() {
+    const rawEl = document.getElementById('raw-content-text');
+    if (!rawEl) return;
+    navigator.clipboard.writeText(rawEl.innerText).then(() => {
+        const btn = document.getElementById('copy-raw-btn');
+        btn.innerHTML = '<i class="bi bi-check2 me-1"></i>Copied!';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="bi bi-clipboard me-1"></i>Copy Text';
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}

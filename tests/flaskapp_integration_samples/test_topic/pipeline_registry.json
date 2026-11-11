@@ -1,0 +1,854 @@
+{
+    "8a59e86352b0fb05": {
+        "first_used": "2026-10-21T14:56:27.029145+00:00",
+        "class_name": "TagResult",
+        "file_count": 292,
+        "last_used": "2026-10-21T16:31:08.875356+00:00",
+        "chain_graph": {
+            "pipeline": {
+                "type": "TagPipelineDecisionModel",
+                "category_tag_config": {
+                    "MarketWideImpact": [
+                        "OrderInfrastructureChanges",
+                        "AllCorporateActions",
+                        "AccountMaintenance"
+                    ],
+                    "SegmentAssetLevelImpact": [
+                        "OrderInfrastructureChanges",
+                        "AllCorporateActions",
+                        "AccountMaintenance"
+                    ],
+                    "SpecificSecurityImpact": [
+                        "AllCorporateActions"
+                    ]
+                },
+                "decision_model": {
+                    "url": "http://localhost:8080/v1/systemone",
+                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                },
+                "eval_max_retries": 0,
+                "evaluators": [
+                    "ResultDataValidationEvals()"
+                ],
+                "impact_categories": null,
+                "include_parent_eval": false,
+                "invoke_max_retries": 0,
+                "llm": {
+                    "model": "gemma-4-12b-it-qat-q4_0",
+                    "url": "http://localhost:8080/v1/chat/completions",
+                    "_payload_adapter": {}
+                },
+                "min_chars_for_summarization": 4000,
+                "name": "TagPipelineDecisionModel",
+                "prompt_samples": null,
+                "target_tag_examples": {
+                    "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                    "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                    "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                },
+                "target_tags": [
+                    "OrderInfrastructureChanges",
+                    "AllCorporateActions",
+                    "AccountMaintenance"
+                ],
+                "text_chunk_size": 800
+            },
+            "chain_graph": {
+                "type": "BoolRouterChain",
+                "default_chain": {
+                    "type": "CategoricalRouterChain",
+                    "condition": {
+                        "_llm": {
+                            "url": "http://localhost:8080/v1/systemone",
+                            "model": "Cloudflare_clef-flash-Q4_K_M"
+                        },
+                        "_buckets": [
+                            "SpecificSecurityImpact",
+                            "SegmentAssetLevelImpact",
+                            "MarketWideImpact"
+                        ],
+                        "_samples": null
+                    },
+                    "default_chain": null,
+                    "destination_map": {
+                        "SpecificSecurityImpact": {
+                            "type": "TradingTopicsDistiller",
+                            "decision_model": {
+                                "url": "http://localhost:8080/v1/systemone",
+                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                            },
+                            "eval_max_retries": 0,
+                            "evaluators": [
+                                "ResultDataValidationEvals()"
+                            ],
+                            "include_parent_eval": false,
+                            "invoke_max_retries": 0,
+                            "llm": {
+                                "model": "gemma-4-12b-it-qat-q4_0",
+                                "url": "http://localhost:8080/v1/chat/completions",
+                                "_payload_adapter": {}
+                            },
+                            "name": "TradingTopicsDistiller",
+                            "target_tags": [
+                                "AllCorporateActions"
+                            ]
+                        },
+                        "SegmentAssetLevelImpact": {
+                            "type": "TradingTopicsDistiller",
+                            "decision_model": {
+                                "url": "http://localhost:8080/v1/systemone",
+                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                            },
+                            "eval_max_retries": 0,
+                            "evaluators": [
+                                "ResultDataValidationEvals()"
+                            ],
+                            "include_parent_eval": false,
+                            "invoke_max_retries": 0,
+                            "llm": {
+                                "model": "gemma-4-12b-it-qat-q4_0",
+                                "url": "http://localhost:8080/v1/chat/completions",
+                                "_payload_adapter": {}
+                            },
+                            "name": "TradingTopicsDistiller",
+                            "target_tags": [
+                                "OrderInfrastructureChanges",
+                                "AllCorporateActions",
+                                "AccountMaintenance"
+                            ]
+                        },
+                        "MarketWideImpact": {
+                            "type": "TradingTopicsDistiller",
+                            "decision_model": {
+                                "url": "http://localhost:8080/v1/systemone",
+                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                            },
+                            "eval_max_retries": 0,
+                            "evaluators": [
+                                "ResultDataValidationEvals()"
+                            ],
+                            "include_parent_eval": false,
+                            "invoke_max_retries": 0,
+                            "llm": {
+                                "model": "gemma-4-12b-it-qat-q4_0",
+                                "url": "http://localhost:8080/v1/chat/completions",
+                                "_payload_adapter": {}
+                            },
+                            "name": "TradingTopicsDistiller",
+                            "target_tags": [
+                                "OrderInfrastructureChanges",
+                                "AllCorporateActions",
+                                "AccountMaintenance"
+                            ]
+                        }
+                    },
+                    "eval_max_retries": 0,
+                    "evaluators": [],
+                    "include_parent_eval": false,
+                    "invoke_max_retries": 0,
+                    "name": "ImpactRouter"
+                },
+                "eval_max_retries": 0,
+                "evaluators": [],
+                "include_parent_eval": false,
+                "invoke_max_retries": 0,
+                "name": "BoolRouterChain",
+                "routes": [
+                    {
+                        "name": "LongText",
+                        "condition": {
+                            "min_chars": 4000,
+                            "max_chars": Infinity
+                        },
+                        "destination_chain": {
+                            "type": "SequentialChain",
+                            "chains": [
+                                {
+                                    "type": "RefineSummarizeChain",
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                        "url": "http://localhost:8080/v1/chat/completions",
+                                        "_payload_adapter": {}
+                                    },
+                                    "name": "RefineSummarizeChain",
+                                    "text_splitter": {
+                                        "chunk_size": 800,
+                                        "chunk_overlap": 100
+                                    }
+                                },
+                                {
+                                    "type": "CategoricalRouterChain",
+                                    "condition": {
+                                        "_llm": {
+                                            "url": "http://localhost:8080/v1/systemone",
+                                            "model": "Cloudflare_clef-flash-Q4_K_M"
+                                        },
+                                        "_buckets": [
+                                            "SpecificSecurityImpact",
+                                            "SegmentAssetLevelImpact",
+                                            "MarketWideImpact"
+                                        ],
+                                        "_samples": null
+                                    },
+                                    "default_chain": null,
+                                    "destination_map": {
+                                        "SpecificSecurityImpact": {
+                                            "type": "TradingTopicsDistiller",
+                                            "decision_model": {
+                                                "url": "http://localhost:8080/v1/systemone",
+                                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                                            },
+                                            "eval_max_retries": 0,
+                                            "evaluators": [
+                                                "ResultDataValidationEvals()"
+                                            ],
+                                            "include_parent_eval": false,
+                                            "invoke_max_retries": 0,
+                                            "llm": {
+                                                "model": "gemma-4-12b-it-qat-q4_0",
+                                                "url": "http://localhost:8080/v1/chat/completions",
+                                                "_payload_adapter": {}
+                                            },
+                                            "name": "TradingTopicsDistiller",
+                                            "target_tags": [
+                                                "AllCorporateActions"
+                                            ]
+                                        },
+                                        "SegmentAssetLevelImpact": {
+                                            "type": "TradingTopicsDistiller",
+                                            "decision_model": {
+                                                "url": "http://localhost:8080/v1/systemone",
+                                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                                            },
+                                            "eval_max_retries": 0,
+                                            "evaluators": [
+                                                "ResultDataValidationEvals()"
+                                            ],
+                                            "include_parent_eval": false,
+                                            "invoke_max_retries": 0,
+                                            "llm": {
+                                                "model": "gemma-4-12b-it-qat-q4_0",
+                                                "url": "http://localhost:8080/v1/chat/completions",
+                                                "_payload_adapter": {}
+                                            },
+                                            "name": "TradingTopicsDistiller",
+                                            "target_tags": [
+                                                "OrderInfrastructureChanges",
+                                                "AllCorporateActions",
+                                                "AccountMaintenance"
+                                            ]
+                                        },
+                                        "MarketWideImpact": {
+                                            "type": "TradingTopicsDistiller",
+                                            "decision_model": {
+                                                "url": "http://localhost:8080/v1/systemone",
+                                                "model": "Cloudflare_clef-flash-Q4_K_M"
+                                            },
+                                            "eval_max_retries": 0,
+                                            "evaluators": [
+                                                "ResultDataValidationEvals()"
+                                            ],
+                                            "include_parent_eval": false,
+                                            "invoke_max_retries": 0,
+                                            "llm": {
+                                                "model": "gemma-4-12b-it-qat-q4_0",
+                                                "url": "http://localhost:8080/v1/chat/completions",
+                                                "_payload_adapter": {}
+                                            },
+                                            "name": "TradingTopicsDistiller",
+                                            "target_tags": [
+                                                "OrderInfrastructureChanges",
+                                                "AllCorporateActions",
+                                                "AccountMaintenance"
+                                            ]
+                                        }
+                                    },
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "name": "ImpactRouter"
+                                }
+                            ],
+                            "eval_max_retries": 0,
+                            "evaluators": [],
+                            "include_parent_eval": false,
+                            "invoke_max_retries": 0,
+                            "name": "SequentialChain"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "55453482ccda74ba": {
+        "first_used": "2026-10-24T00:53:21.356046+00:00",
+        "class_name": "TagResult",
+        "file_count": 293,
+        "last_used": "2026-10-24T02:44:54.184910+00:00",
+        "chain_graph": {
+            "pipeline": {
+                "type": "TagPipelineDecisionModel",
+                "category_tag_config": {
+                    "MarketWideImpact": [
+                        "OrderInfrastructureChanges",
+                        "AllCorporateActions",
+                        "AccountMaintenance"
+                    ],
+                    "SegmentAssetLevelImpact": [
+                        "OrderInfrastructureChanges",
+                        "AllCorporateActions",
+                        "AccountMaintenance"
+                    ],
+                    "SpecificSecurityImpact": [
+                        "AllCorporateActions"
+                    ]
+                },
+                "decision_model": {
+                    "url": "http://localhost:8080/v1/systemone",
+                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                },
+                "eval_max_retries": 0,
+                "evaluators": [
+                    "ResultDataValidationEvals()"
+                ],
+                "impact_categories": null,
+                "include_parent_eval": false,
+                "invoke_max_retries": 0,
+                "llm": {
+                    "model": "gemma-4-12b-it-qat-q4_0",
+                    "url": "http://localhost:8080/v1/chat/completions",
+                    "_payload_adapter": {}
+                },
+                "min_chars_for_summarization": 4000,
+                "name": "TagPipelineDecisionModel",
+                "prompt_samples": null,
+                "target_tag_examples": {
+                    "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                    "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                    "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                },
+                "target_tags": [
+                    "OrderInfrastructureChanges",
+                    "AllCorporateActions",
+                    "AccountMaintenance"
+                ],
+                "text_chunk_size": 800
+            },
+            "chain_graph": {
+                "type": "BoolRouterChain",
+                "default_chain": {
+                    "type": "CategoricalRouterChain",
+                    "condition": {
+                        "llm": {
+                            "url": "http://localhost:8080/v1/systemone",
+                            "model": "Cloudflare_clef-flash-Q4_K_M"
+                        },
+                        "buckets": [
+                            "SpecificSecurityImpact",
+                            "SegmentAssetLevelImpact",
+                            "MarketWideImpact"
+                        ],
+                        "samples": null
+                    },
+                    "default_chain": null,
+                    "destination_map": {
+                        "SpecificSecurityImpact": {
+                            "distiller": {
+                                "type": "TradingTopicsDistiller",
+                                "categorisation_chain": {
+                                    "type": "OneAtATimeCategorisation",
+                                    "batch_size": 1,
+                                    "eval_max_retries": 3,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "url": "http://localhost:8080/v1/systemone",
+                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                    },
+                                    "name": "OneAtATimeCategorisation",
+                                    "target_tag_examples": {
+                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                    },
+                                    "target_tags": [
+                                        "AllCorporateActions"
+                                    ]
+                                },
+                                "decision_model": {
+                                    "url": "http://localhost:8080/v1/systemone",
+                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                },
+                                "eval_max_retries": 0,
+                                "evaluators": [
+                                    "ResultDataValidationEvals()"
+                                ],
+                                "include_parent_eval": false,
+                                "invoke_max_retries": 0,
+                                "llm": {
+                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                    "url": "http://localhost:8080/v1/chat/completions",
+                                    "_payload_adapter": {}
+                                },
+                                "name": "TradingTopicsDistiller",
+                                "summarisation_chain": {
+                                    "type": "TradingTopicsSummarisation",
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                        "url": "http://localhost:8080/v1/chat/completions",
+                                        "_payload_adapter": {}
+                                    },
+                                    "name": "TradingTopicsSummarisation",
+                                    "target_tags": [
+                                        "AllCorporateActions"
+                                    ]
+                                },
+                                "target_tags": [
+                                    "AllCorporateActions"
+                                ]
+                            },
+                            "target_tags": [
+                                "OrderInfrastructureChanges",
+                                "AllCorporateActions",
+                                "AccountMaintenance"
+                            ]
+                        },
+                        "SegmentAssetLevelImpact": {
+                            "distiller": {
+                                "type": "TradingTopicsDistiller",
+                                "categorisation_chain": {
+                                    "type": "OneAtATimeCategorisation",
+                                    "batch_size": 1,
+                                    "eval_max_retries": 3,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "url": "http://localhost:8080/v1/systemone",
+                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                    },
+                                    "name": "OneAtATimeCategorisation",
+                                    "target_tag_examples": {
+                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                    },
+                                    "target_tags": [
+                                        "OrderInfrastructureChanges",
+                                        "AllCorporateActions",
+                                        "AccountMaintenance"
+                                    ]
+                                },
+                                "decision_model": {
+                                    "url": "http://localhost:8080/v1/systemone",
+                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                },
+                                "eval_max_retries": 0,
+                                "evaluators": [
+                                    "ResultDataValidationEvals()"
+                                ],
+                                "include_parent_eval": false,
+                                "invoke_max_retries": 0,
+                                "llm": {
+                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                    "url": "http://localhost:8080/v1/chat/completions",
+                                    "_payload_adapter": {}
+                                },
+                                "name": "TradingTopicsDistiller",
+                                "summarisation_chain": {
+                                    "type": "TradingTopicsSummarisation",
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                        "url": "http://localhost:8080/v1/chat/completions",
+                                        "_payload_adapter": {}
+                                    },
+                                    "name": "TradingTopicsSummarisation",
+                                    "target_tags": [
+                                        "OrderInfrastructureChanges",
+                                        "AllCorporateActions",
+                                        "AccountMaintenance"
+                                    ]
+                                },
+                                "target_tags": [
+                                    "OrderInfrastructureChanges",
+                                    "AllCorporateActions",
+                                    "AccountMaintenance"
+                                ]
+                            },
+                            "target_tags": [
+                                "OrderInfrastructureChanges",
+                                "AllCorporateActions",
+                                "AccountMaintenance"
+                            ]
+                        },
+                        "MarketWideImpact": {
+                            "distiller": {
+                                "type": "TradingTopicsDistiller",
+                                "categorisation_chain": {
+                                    "type": "OneAtATimeCategorisation",
+                                    "batch_size": 1,
+                                    "eval_max_retries": 3,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "url": "http://localhost:8080/v1/systemone",
+                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                    },
+                                    "name": "OneAtATimeCategorisation",
+                                    "target_tag_examples": {
+                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                    },
+                                    "target_tags": [
+                                        "OrderInfrastructureChanges",
+                                        "AllCorporateActions",
+                                        "AccountMaintenance"
+                                    ]
+                                },
+                                "decision_model": {
+                                    "url": "http://localhost:8080/v1/systemone",
+                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                },
+                                "eval_max_retries": 0,
+                                "evaluators": [
+                                    "ResultDataValidationEvals()"
+                                ],
+                                "include_parent_eval": false,
+                                "invoke_max_retries": 0,
+                                "llm": {
+                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                    "url": "http://localhost:8080/v1/chat/completions",
+                                    "_payload_adapter": {}
+                                },
+                                "name": "TradingTopicsDistiller",
+                                "summarisation_chain": {
+                                    "type": "TradingTopicsSummarisation",
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                        "url": "http://localhost:8080/v1/chat/completions",
+                                        "_payload_adapter": {}
+                                    },
+                                    "name": "TradingTopicsSummarisation",
+                                    "target_tags": [
+                                        "OrderInfrastructureChanges",
+                                        "AllCorporateActions",
+                                        "AccountMaintenance"
+                                    ]
+                                },
+                                "target_tags": [
+                                    "OrderInfrastructureChanges",
+                                    "AllCorporateActions",
+                                    "AccountMaintenance"
+                                ]
+                            },
+                            "target_tags": [
+                                "OrderInfrastructureChanges",
+                                "AllCorporateActions",
+                                "AccountMaintenance"
+                            ]
+                        }
+                    },
+                    "eval_max_retries": 0,
+                    "evaluators": [],
+                    "include_parent_eval": false,
+                    "invoke_max_retries": 0,
+                    "name": "ImpactRouter"
+                },
+                "eval_max_retries": 0,
+                "evaluators": [],
+                "include_parent_eval": false,
+                "invoke_max_retries": 0,
+                "name": "BoolRouterChain",
+                "routes": [
+                    {
+                        "name": "LongText",
+                        "condition": {
+                            "min_chars": 4000,
+                            "max_chars": Infinity
+                        },
+                        "destination_chain": {
+                            "type": "SequentialChain",
+                            "chains": [
+                                {
+                                    "type": "RefineSummarizeChain",
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "llm": {
+                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                        "url": "http://localhost:8080/v1/chat/completions",
+                                        "_payload_adapter": {}
+                                    },
+                                    "name": "RefineSummarizeChain",
+                                    "text_splitter": {
+                                        "chunk_size": 800,
+                                        "chunk_overlap": 100
+                                    }
+                                },
+                                {
+                                    "type": "CategoricalRouterChain",
+                                    "condition": {
+                                        "llm": {
+                                            "url": "http://localhost:8080/v1/systemone",
+                                            "model": "Cloudflare_clef-flash-Q4_K_M"
+                                        },
+                                        "buckets": [
+                                            "SpecificSecurityImpact",
+                                            "SegmentAssetLevelImpact",
+                                            "MarketWideImpact"
+                                        ],
+                                        "samples": null
+                                    },
+                                    "default_chain": null,
+                                    "destination_map": {
+                                        "SpecificSecurityImpact": {
+                                            "distiller": {
+                                                "type": "TradingTopicsDistiller",
+                                                "categorisation_chain": {
+                                                    "type": "OneAtATimeCategorisation",
+                                                    "batch_size": 1,
+                                                    "eval_max_retries": 3,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "url": "http://localhost:8080/v1/systemone",
+                                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                    },
+                                                    "name": "OneAtATimeCategorisation",
+                                                    "target_tag_examples": {
+                                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                                    },
+                                                    "target_tags": [
+                                                        "AllCorporateActions"
+                                                    ]
+                                                },
+                                                "decision_model": {
+                                                    "url": "http://localhost:8080/v1/systemone",
+                                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                },
+                                                "eval_max_retries": 0,
+                                                "evaluators": [
+                                                    "ResultDataValidationEvals()"
+                                                ],
+                                                "include_parent_eval": false,
+                                                "invoke_max_retries": 0,
+                                                "llm": {
+                                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                                    "url": "http://localhost:8080/v1/chat/completions",
+                                                    "_payload_adapter": {}
+                                                },
+                                                "name": "TradingTopicsDistiller",
+                                                "summarisation_chain": {
+                                                    "type": "TradingTopicsSummarisation",
+                                                    "eval_max_retries": 0,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                                        "url": "http://localhost:8080/v1/chat/completions",
+                                                        "_payload_adapter": {}
+                                                    },
+                                                    "name": "TradingTopicsSummarisation",
+                                                    "target_tags": [
+                                                        "AllCorporateActions"
+                                                    ]
+                                                },
+                                                "target_tags": [
+                                                    "AllCorporateActions"
+                                                ]
+                                            },
+                                            "target_tags": [
+                                                "OrderInfrastructureChanges",
+                                                "AllCorporateActions",
+                                                "AccountMaintenance"
+                                            ]
+                                        },
+                                        "SegmentAssetLevelImpact": {
+                                            "distiller": {
+                                                "type": "TradingTopicsDistiller",
+                                                "categorisation_chain": {
+                                                    "type": "OneAtATimeCategorisation",
+                                                    "batch_size": 1,
+                                                    "eval_max_retries": 3,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "url": "http://localhost:8080/v1/systemone",
+                                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                    },
+                                                    "name": "OneAtATimeCategorisation",
+                                                    "target_tag_examples": {
+                                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                                    },
+                                                    "target_tags": [
+                                                        "OrderInfrastructureChanges",
+                                                        "AllCorporateActions",
+                                                        "AccountMaintenance"
+                                                    ]
+                                                },
+                                                "decision_model": {
+                                                    "url": "http://localhost:8080/v1/systemone",
+                                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                },
+                                                "eval_max_retries": 0,
+                                                "evaluators": [
+                                                    "ResultDataValidationEvals()"
+                                                ],
+                                                "include_parent_eval": false,
+                                                "invoke_max_retries": 0,
+                                                "llm": {
+                                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                                    "url": "http://localhost:8080/v1/chat/completions",
+                                                    "_payload_adapter": {}
+                                                },
+                                                "name": "TradingTopicsDistiller",
+                                                "summarisation_chain": {
+                                                    "type": "TradingTopicsSummarisation",
+                                                    "eval_max_retries": 0,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                                        "url": "http://localhost:8080/v1/chat/completions",
+                                                        "_payload_adapter": {}
+                                                    },
+                                                    "name": "TradingTopicsSummarisation",
+                                                    "target_tags": [
+                                                        "OrderInfrastructureChanges",
+                                                        "AllCorporateActions",
+                                                        "AccountMaintenance"
+                                                    ]
+                                                },
+                                                "target_tags": [
+                                                    "OrderInfrastructureChanges",
+                                                    "AllCorporateActions",
+                                                    "AccountMaintenance"
+                                                ]
+                                            },
+                                            "target_tags": [
+                                                "OrderInfrastructureChanges",
+                                                "AllCorporateActions",
+                                                "AccountMaintenance"
+                                            ]
+                                        },
+                                        "MarketWideImpact": {
+                                            "distiller": {
+                                                "type": "TradingTopicsDistiller",
+                                                "categorisation_chain": {
+                                                    "type": "OneAtATimeCategorisation",
+                                                    "batch_size": 1,
+                                                    "eval_max_retries": 3,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "url": "http://localhost:8080/v1/systemone",
+                                                        "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                    },
+                                                    "name": "OneAtATimeCategorisation",
+                                                    "target_tag_examples": {
+                                                        "OrderInfrastructureChanges": "### Order Infrastructure Changes\n\nUse this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.\n\nInclude changes affecting:\n- **Order handling:** placement, modification, cancellation, rejection, and validation.\n- **Execution:** order matching, fills, partial fills, and execution processing.\n- **Order status:** acknowledgements, rejection messages, status updates, and execution reports.\n- **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.\n- **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.\n\n**Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?",
+                                                        "AllCorporateActions": "### All Corporate Actions\n\nUse this category for corporate actions affecting security holders, as well as policy, rule, or framework changes governing their treatment.\n\nInclude changes or events involving:\n- **Cash dividends:** dividend amounts, currency, eligibility, key dates, payment, and withholding.\n- **Stock splits and consolidations:** split ratios, revised share quantities, and adjustments to holdings.\n- **Other corporate actions:** bonus issues, rights issues, share distributions, and similar events.\n- **Holder entitlements:** eligibility, entitlement calculations, elections, deadlines, and treatment of existing holdings.\n- **Processing and treatment:** changes to corporate action rules, procedures, or frameworks affecting entitlements, payments, distributions, or adjustments.\n\n**Decision test:** Does the document describe a corporate action or a change to its rules, treatment, or processing that affects security holders or their entitlements?",
+                                                        "AccountMaintenance": "### Account Maintenance\n\nUse this category for changes to account management, account records, balances, fees, funding, and transfers.\n\nInclude changes affecting:\n- **Balances and records:** account balances, transaction history, statements, and balance tracking.\n- **Fees and funding:** fee schedules, funding methods, deposits, withdrawals, and funding requirements.\n- **Transfers:** fund transfers, transfer processing, settlement status, and transfer limits.\n- **Wallets and addresses:** wallet addresses, address management, supported assets, and deposit or withdrawal addresses.\n- **Account processes:** changes to account maintenance procedures, reconciliation, reporting, or how account-related information is recorded and displayed.\n\n**Decision test:** Does the change affect how account balances, fees, funding, transfers, wallet addresses, or other account-related information and activities are maintained, tracked, or processed?"
+                                                    },
+                                                    "target_tags": [
+                                                        "OrderInfrastructureChanges",
+                                                        "AllCorporateActions",
+                                                        "AccountMaintenance"
+                                                    ]
+                                                },
+                                                "decision_model": {
+                                                    "url": "http://localhost:8080/v1/systemone",
+                                                    "model": "Cloudflare_clef-flash-Q4_K_M"
+                                                },
+                                                "eval_max_retries": 0,
+                                                "evaluators": [
+                                                    "ResultDataValidationEvals()"
+                                                ],
+                                                "include_parent_eval": false,
+                                                "invoke_max_retries": 0,
+                                                "llm": {
+                                                    "model": "gemma-4-12b-it-qat-q4_0",
+                                                    "url": "http://localhost:8080/v1/chat/completions",
+                                                    "_payload_adapter": {}
+                                                },
+                                                "name": "TradingTopicsDistiller",
+                                                "summarisation_chain": {
+                                                    "type": "TradingTopicsSummarisation",
+                                                    "eval_max_retries": 0,
+                                                    "evaluators": [],
+                                                    "include_parent_eval": false,
+                                                    "invoke_max_retries": 0,
+                                                    "llm": {
+                                                        "model": "gemma-4-12b-it-qat-q4_0",
+                                                        "url": "http://localhost:8080/v1/chat/completions",
+                                                        "_payload_adapter": {}
+                                                    },
+                                                    "name": "TradingTopicsSummarisation",
+                                                    "target_tags": [
+                                                        "OrderInfrastructureChanges",
+                                                        "AllCorporateActions",
+                                                        "AccountMaintenance"
+                                                    ]
+                                                },
+                                                "target_tags": [
+                                                    "OrderInfrastructureChanges",
+                                                    "AllCorporateActions",
+                                                    "AccountMaintenance"
+                                                ]
+                                            },
+                                            "target_tags": [
+                                                "OrderInfrastructureChanges",
+                                                "AllCorporateActions",
+                                                "AccountMaintenance"
+                                            ]
+                                        }
+                                    },
+                                    "eval_max_retries": 0,
+                                    "evaluators": [],
+                                    "include_parent_eval": false,
+                                    "invoke_max_retries": 0,
+                                    "name": "ImpactRouter"
+                                }
+                            ],
+                            "eval_max_retries": 0,
+                            "evaluators": [],
+                            "include_parent_eval": false,
+                            "invoke_max_retries": 0,
+                            "name": "SequentialChain"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

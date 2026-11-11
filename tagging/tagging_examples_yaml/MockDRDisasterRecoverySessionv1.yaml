@@ -1,0 +1,17 @@
+tag: MockDRDisasterRecoverySession
+examples: |
+  ### Mock Disaster Recovery Sessions and DR Infrastructure Operations
+
+  Use this category when the primary subject of the document is a mock disaster recovery (DR) exercise, a special market rehearsal, or the operation or testing of exchange trading, clearing, or settlement services using disaster recovery infrastructure.
+
+  Qualifying events may include:
+  - Special, ad hoc, or out-of-schedule disaster recovery sessions, drills, simulations, or rehearsals.
+  - Market rehearsals conducted outside normal trading hours, including weekends, public holidays, or other non-standard operating periods.
+  - Regular trading sessions conducted during normal trading hours while the exchange or its related infrastructure operates from a disaster recovery site, backup environment, or DR system.
+  - Planned failover, switchover, recovery, or fallback exercises involving production or backup trading, clearing, settlement, or connectivity systems.
+  - Testing or validation of the exchange's operational readiness, business continuity, system recovery, or service continuity using DR infrastructure.
+  - Announcements of DR session schedules, affected systems or services, participant requirements, operational arrangements, rescheduling, postponement, cancellation, or completion.
+
+  Do not classify a document under this category solely because it mentions system testing, market rehearsals, backup systems, operational readiness, or business continuity. Exclude routine production maintenance, ordinary system upgrades, live incident or outage notifications, and general DR policy changes that do not announce, describe, or materially concern a DR exercise or the operation of exchange services using DR infrastructure.
+
+  **Decision test:** Does the document primarily concern (1) a mock DR exercise or rehearsal, (2) a special market rehearsal outside normal trading hours, or (3) trading or related exchange services operating from DR infrastructure, including during normal trading hours? If none of these conditions is established, do not assign this category merely because DR or system operations are mentioned.

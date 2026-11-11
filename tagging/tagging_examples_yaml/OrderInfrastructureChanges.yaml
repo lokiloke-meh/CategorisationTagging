@@ -1,0 +1,14 @@
+tag: OrderInfrastructureChanges
+examples: |
+  ### Order Infrastructure Changes
+
+  Use this category for hardware, software, system, network, or infrastructure changes affecting trading systems or the order lifecycle.
+
+  Include changes affecting:
+  - **Order handling:** placement, modification, cancellation, rejection, and validation.
+  - **Execution:** order matching, fills, partial fills, and execution processing.
+  - **Order status:** acknowledgements, rejection messages, status updates, and execution reports.
+  - **Performance:** order processing speed, latency, throughput, capacity, responsiveness, and system performance.
+  - **Infrastructure:** system upgrades, migrations, connectivity, interfaces, protocols, and hardware or software changes affecting the above processes.
+
+  **Decision test:** Does the change affect order handling, execution, reporting, or the performance, speed, capacity, or reliability of the systems supporting these processes?

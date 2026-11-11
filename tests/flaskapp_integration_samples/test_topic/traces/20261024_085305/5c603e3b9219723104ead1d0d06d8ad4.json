@@ -1,0 +1,623 @@
+[
+    {
+        "name": "llamacpp.decision",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0xe8d66ba9bdf47085",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x5b66258825cb3463",
+        "start_time": "2026-10-24T02:12:49.097508Z",
+        "end_time": "2026-10-24T02:12:51.239685Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "llm.request.model": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.model_name": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.prompt_token_count": 944,
+            "llm.success": true,
+            "llm.data_type": "llm",
+            "llm.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "llm.span_id": "e8d66ba9bdf47085",
+            "llm.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\llm_details\\5c603e3b9219723104ead1d0d06d8ad4\\e8d66ba9bdf47085.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.TopicBucketing",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x5b66258825cb3463",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x1008944af25c4ce4",
+        "start_time": "2026-10-24T02:12:49.097403Z",
+        "end_time": "2026-10-24T02:12:51.240119Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "TopicBucketing",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"5b66258825cb3463\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "5b66258825cb3463",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\5b66258825cb3463.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "llamacpp.decision",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0xdae67f1b16602932",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x9e059377ddb2938c",
+        "start_time": "2026-10-24T02:12:51.242395Z",
+        "end_time": "2026-10-24T02:12:51.469494Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "llm.request.model": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.model_name": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.prompt_token_count": 1135,
+            "llm.success": true,
+            "llm.data_type": "llm",
+            "llm.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "llm.span_id": "dae67f1b16602932",
+            "llm.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\llm_details\\5c603e3b9219723104ead1d0d06d8ad4\\dae67f1b16602932.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.SingleTradingTopicCategorisation[OrderInfrastructureChanges]",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x9e059377ddb2938c",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x6dc3fa5750f52369",
+        "start_time": "2026-10-24T02:12:51.242358Z",
+        "end_time": "2026-10-24T02:12:51.470386Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "SingleTradingTopicCategorisation[OrderInfrastructureChanges]",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"9e059377ddb2938c\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "9e059377ddb2938c",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\9e059377ddb2938c.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "llamacpp.decision",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x63addc97dcf11a0f",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0xe4eeaca588ceb36c",
+        "start_time": "2026-10-24T02:12:51.470515Z",
+        "end_time": "2026-10-24T02:12:51.706651Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "llm.request.model": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.model_name": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.prompt_token_count": 1149,
+            "llm.success": true,
+            "llm.data_type": "llm",
+            "llm.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "llm.span_id": "63addc97dcf11a0f",
+            "llm.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\llm_details\\5c603e3b9219723104ead1d0d06d8ad4\\63addc97dcf11a0f.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.SingleTradingTopicCategorisation[AllCorporateActions]",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0xe4eeaca588ceb36c",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x6dc3fa5750f52369",
+        "start_time": "2026-10-24T02:12:51.470466Z",
+        "end_time": "2026-10-24T02:12:51.707418Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "SingleTradingTopicCategorisation[AllCorporateActions]",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"e4eeaca588ceb36c\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "e4eeaca588ceb36c",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\e4eeaca588ceb36c.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "llamacpp.decision",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x98056c06fa184c7a",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x91191d651f3db2e6",
+        "start_time": "2026-10-24T02:12:51.707518Z",
+        "end_time": "2026-10-24T02:12:51.935825Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "llm.request.model": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.model_name": "Cloudflare_clef-flash-Q4_K_M",
+            "llm.prompt_token_count": 1144,
+            "llm.success": true,
+            "llm.data_type": "llm",
+            "llm.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "llm.span_id": "98056c06fa184c7a",
+            "llm.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\llm_details\\5c603e3b9219723104ead1d0d06d8ad4\\98056c06fa184c7a.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.SingleTradingTopicCategorisation[AccountMaintenance]",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x91191d651f3db2e6",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x6dc3fa5750f52369",
+        "start_time": "2026-10-24T02:12:51.707482Z",
+        "end_time": "2026-10-24T02:12:51.936965Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "SingleTradingTopicCategorisation[AccountMaintenance]",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"91191d651f3db2e6\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "91191d651f3db2e6",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\91191d651f3db2e6.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.OneAtATimeCategorisation",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x6dc3fa5750f52369",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x45cbbb908cd9c678",
+        "start_time": "2026-10-24T02:12:51.241114Z",
+        "end_time": "2026-10-24T02:12:51.938744Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "OneAtATimeCategorisation",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"6dc3fa5750f52369\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "6dc3fa5750f52369",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\6dc3fa5750f52369.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "llamacpp.chat.dict",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x6e3379ec54cbca7f",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x63417d142cb5d941",
+        "start_time": "2026-10-24T02:12:51.940272Z",
+        "end_time": "2026-10-24T02:13:04.003640Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "llm.request.model": "gemma-4-12b-it-qat-q4_0",
+            "llm.model_name": "gemma-4-12b-it-qat-q4_0",
+            "llm.model_options": "{\"think\": false, \"stream\": false, \"options\": {\"temperature\": 0.2}, \"response_format\": {\"type\": \"json_object\", \"schema\": {\"properties\": {\"effectivedate\": {\"default\": null, \"format\": \"date\", \"title\": \"Effectivedate\", \"type\": \"string\"}, \"summary\": {\"title\": \"Summary\", \"type\": \"string\"}}, \"required\": [\"summary\"], \"title\": \"ResponseModel\", \"type\": \"object\"}}, \"model\": \"gemma-4-12b-it-qat-q4_0\"}",
+            "llm.prompt_token_count": 884,
+            "llm.completion_token_count": 709,
+            "llm.total_token_count": 1593,
+            "llm.token_gen_duration_secs": 9.73343,
+            "llm.prompt_eval_duration_secs": 0.36283699999999997,
+            "llm.response_tokens_per_second": 72.7390036194846,
+            "llm.prompt_tokens_per_second": 2094.6044642635675,
+            "llm.success": true,
+            "llm.data_type": "llm",
+            "llm.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "llm.span_id": "6e3379ec54cbca7f",
+            "llm.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\llm_details\\5c603e3b9219723104ead1d0d06d8ad4\\6e3379ec54cbca7f.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.TradingTopicsSummarisation",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x63417d142cb5d941",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x45cbbb908cd9c678",
+        "start_time": "2026-10-24T02:12:51.938796Z",
+        "end_time": "2026-10-24T02:13:04.004592Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "TradingTopicsSummarisation",
+            "chain.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"63417d142cb5d941\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "63417d142cb5d941",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\63417d142cb5d941.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "eval.ResultDataValidationEvals",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x595a21813edad33c",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x45cbbb908cd9c678",
+        "start_time": "2026-10-24T02:13:04.006182Z",
+        "end_time": "2026-10-24T02:13:04.007756Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "eval.eval_name": "ResultDataValidationEvals",
+            "eval.eval_success": true,
+            "eval.passed": true,
+            "eval.score": 1,
+            "eval.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"595a21813edad33c\", \"session_id\": \"20261024_085305\"}",
+            "eval.data_type": "eval",
+            "eval.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "eval.span_id": "595a21813edad33c",
+            "eval.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\eval_details\\5c603e3b9219723104ead1d0d06d8ad4\\595a21813edad33c.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.TradingTopicsDistiller",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x45cbbb908cd9c678",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x1008944af25c4ce4",
+        "start_time": "2026-10-24T02:12:51.240731Z",
+        "end_time": "2026-10-24T02:13:04.008879Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "TradingTopicsDistiller",
+            "chain.metadata": "{\"OneAtATimeCategorisation\": {\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"6dc3fa5750f52369\", \"session_id\": \"20261024_085305\"}, \"TradingTopicsSummarisation\": {\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"63417d142cb5d941\", \"session_id\": \"20261024_085305\"}, \"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"45cbbb908cd9c678\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[{\"eval_name\": \"ResultDataValidationEvals\", \"eval_success\": true, \"passed\": true, \"score\": 1, \"feedback\": null, \"metadata\": {\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"595a21813edad33c\", \"session_id\": \"20261024_085305\"}, \"eval_children\": [], \"eval_intermediate_results\": null, \"error_message\": null}]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "45cbbb908cd9c678",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\45cbbb908cd9c678.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.ImpactRouter",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x1008944af25c4ce4",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0xaaa7262c0ff8977b",
+        "start_time": "2026-10-24T02:12:49.097369Z",
+        "end_time": "2026-10-24T02:13:04.010306Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "ImpactRouter",
+            "chain.metadata": "{\"routed_via_category\": \"SegmentAssetLevelImpact\", \"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"1008944af25c4ce4\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "1008944af25c4ce4",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\1008944af25c4ce4.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.BoolRouterChain",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0xaaa7262c0ff8977b",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x2335964740fc3e19",
+        "start_time": "2026-10-24T02:12:49.097283Z",
+        "end_time": "2026-10-24T02:13:04.011321Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "BoolRouterChain",
+            "chain.metadata": "{\"routed_via_bool\": \"default_route\", \"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"aaa7262c0ff8977b\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "aaa7262c0ff8977b",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\aaa7262c0ff8977b.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "eval.ResultDataValidationEvals",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x7a84e4562de89299",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": "0x2335964740fc3e19",
+        "start_time": "2026-10-24T02:13:04.012149Z",
+        "end_time": "2026-10-24T02:13:04.013547Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "eval.eval_name": "ResultDataValidationEvals",
+            "eval.eval_success": true,
+            "eval.passed": true,
+            "eval.score": 1,
+            "eval.metadata": "{\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"7a84e4562de89299\", \"session_id\": \"20261024_085305\"}",
+            "eval.data_type": "eval",
+            "eval.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "eval.span_id": "7a84e4562de89299",
+            "eval.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\eval_details\\5c603e3b9219723104ead1d0d06d8ad4\\7a84e4562de89299.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    },
+    {
+        "name": "chain.TagPipelineDecisionModel",
+        "context": {
+            "trace_id": "0x5c603e3b9219723104ead1d0d06d8ad4",
+            "span_id": "0x2335964740fc3e19",
+            "trace_state": "[]"
+        },
+        "kind": "SpanKind.INTERNAL",
+        "parent_id": null,
+        "start_time": "2026-10-24T02:12:49.097182Z",
+        "end_time": "2026-10-24T02:13:04.013913Z",
+        "status": {
+            "status_code": "OK"
+        },
+        "attributes": {
+            "session.id": "20261024_085305",
+            "session.dir_path": "data_store\\bybit_announcements\\traces\\20261024_085305",
+            "chain.chain_name": "BoolRouterChain",
+            "chain.metadata": "{\"routed_via_bool\": \"default_route\", \"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"aaa7262c0ff8977b\", \"session_id\": \"20261024_085305\"}",
+            "chain.evaluations": "[{\"eval_name\": \"ResultDataValidationEvals\", \"eval_success\": true, \"passed\": true, \"score\": 1, \"feedback\": null, \"metadata\": {\"trace_id\": \"5c603e3b9219723104ead1d0d06d8ad4\", \"span_id\": \"7a84e4562de89299\", \"session_id\": \"20261024_085305\"}, \"eval_children\": [], \"eval_intermediate_results\": null, \"error_message\": null}]",
+            "chain.success": true,
+            "chain.data_type": "chain",
+            "chain.trace_id": "5c603e3b9219723104ead1d0d06d8ad4",
+            "chain.span_id": "2335964740fc3e19",
+            "chain.details_path": "data_store\\bybit_announcements\\traces\\20261024_085305\\chain_details\\5c603e3b9219723104ead1d0d06d8ad4\\2335964740fc3e19.parquet"
+        },
+        "events": [],
+        "links": [],
+        "resource": {
+            "attributes": {
+                "service.name": "llama-application"
+            },
+            "schema_url": ""
+        },
+        "session_id": "20261024_085305"
+    }
+]

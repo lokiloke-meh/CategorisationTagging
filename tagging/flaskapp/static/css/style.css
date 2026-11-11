@@ -1,0 +1,104 @@
+/* Custom Styles for Tagging & Notice Visualizer */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+}
+
+.transition-all {
+    transition: all 0.2s ease-in-out;
+}
+
+.hover-shadow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.hover-primary:hover {
+    color: #0d6efd !important;
+}
+
+.article-card {
+    border-radius: 8px;
+    border-color: #e2e8f0 !important;
+}
+
+.article-summary {
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.filter-card {
+    border-radius: 8px;
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 6rem);
+}
+
+.topic-list, .tag-list {
+    background-color: #f8fafc;
+}
+
+.nav-tabs .nav-link {
+    color: #64748b;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1.25rem;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0f172a;
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+    color: #0d6efd;
+    background-color: transparent;
+    border-color: transparent transparent #0d6efd transparent;
+    border-bottom-width: 3px;
+}
+
+/* Resizable panels in filter sidebar */
+.resizable-panel {
+    user-select: none;
+}
+
+.resize-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 14px;
+    cursor: row-resize;
+    margin: -6px 0 2px;
+    z-index: 10;
+}
+
+.resize-handle:hover,
+.resize-handle.active {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.resize-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    pointer-events: none;
+}
+
+.resize-lines span {
+    width: 12px;
+    height: 1.5px;
+    background-color: currentColor;
+    border-radius: 1px;
+}
+
+.filter-card .card-body {
+    overflow-y: auto;
+}

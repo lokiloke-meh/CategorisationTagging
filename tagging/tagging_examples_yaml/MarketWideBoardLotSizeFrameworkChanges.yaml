@@ -1,0 +1,15 @@
+tag: MarketWideBoardLotSizeFrameworkChanges
+examples: |
+  ### Market-Wide Board Lot Size Framework Changes
+
+  Use this category when the primary subject of the document is a change to the exchange's board lot size framework that applies broadly across a large set of securities or establishes general rules for determining board lot sizes.
+
+  Qualifying changes may include:
+  - Introducing, removing, or revising standard board lot sizes applicable to multiple securities.
+  - Introducing or modifying board lot size tiers, classifications, or assignment criteria.
+  - Changing the general rules, thresholds, or methodology used to determine board lot sizes for listed securities.
+  - Implementing a market-wide or broadly applicable framework for assigning or standardizing board lot sizes.
+
+  Do not classify a document under this category solely because it mentions board lots, odd lots, trading units, or lot sizes. Exclude changes that apply only to one specific security, issuer, or a small number of individually identified securities without changing the general framework. Also exclude unrelated changes to trading rules, trading hours, settlement procedures, or other market operations that do not modify the board lot size framework.
+
+  **Decision test:** Does the document introduce or modify a general framework, rule, tier, threshold, or methodology governing board lot sizes across a broad set of securities? If not, do not assign this category merely because board lot sizes are mentioned.

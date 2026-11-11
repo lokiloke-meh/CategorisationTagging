@@ -1,5 +1,6 @@
 import re
 from collections import Counter
+
 from evals.base_evals import BaseEvaluator, EvalResult
 from prompt_chains.base_chains import ChainResult, Document
 
@@ -13,20 +14,25 @@ class CategoriesModelThoughtConsistencyEvals(BaseEvaluator):
     hard_fail: bool = True
 
     def _evaluate(self, inputs: list[Document], output: ChainResult) -> EvalResult:
-        
+
         if not output.success:
             return EvalResult(
                 eval_name=self.name,
                 eval_success=False,
-                error_message="ChainResult is not successful, nothing to evaluate."
-                )
+                error_message="ChainResult is not successful, nothing to evaluate.",
+            )
 
-        
         try:
-            
-            model_thought = output.eval_context.get("model_thought")
-            single_result_category = output.eval_context.get("single_result_category")
 
+            model_thought = output.eval_context.model_thought
+            categories = output.eval_context.categories
+            if len(categories) != 1:
+                raise ValueError(
+                    f"This evaluator only accepts exactly one category, but got {len(categories)}: {categories}"
+                )
+            single_result_category = (
+                next(iter(categories.values())) if categories else None
+            )
 
             if not model_thought:
                 return EvalResult(
@@ -34,24 +40,27 @@ class CategoriesModelThoughtConsistencyEvals(BaseEvaluator):
                     eval_success=True,
                     passed=True,
                     score=1,
-                    feedback="No model_thought found in eval_context."
-                    )
-            
+                    feedback="No model_thought found in evaluation context.",
+                )
+
             if not single_result_category:
                 return EvalResult(
                     eval_name=self.name,
                     eval_success=True,
                     passed=False,
                     score=0,
-                    feedback="No single_result_category found in eval_context."
-                    )
-
+                    feedback="No single_result_category found in evaluation context.",
+                )
 
             if model_thought:
                 # Split text into sentences using basic punctuation rules (. ! ?)
                 # Extract only the last few sentences
                 # Join them back together into one lowercased block for searching
-                sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', model_thought) if s.strip()]
+                sentences = [
+                    s.strip()
+                    for s in re.split(r"(?<=[.!?])\s+", model_thought)
+                    if s.strip()
+                ]
                 search_block = " ".join(sentences[-10:]).lower()
 
                 # Map lowercase keys to their original preserved casing
@@ -73,14 +82,19 @@ class CategoriesModelThoughtConsistencyEvals(BaseEvaluator):
                 # Check markers starting from the end of the text
                 marker_positions.sort(key=lambda x: x[0], reverse=True)
                 for idx, m_len in marker_positions:
-                    sub_block = search_block[idx + m_len:]
-                    if any(re.search(r'\b' + re.escape(k) + r'\b', sub_block) for k in keyword_map.keys()):
+                    sub_block = search_block[idx + m_len :]
+                    if any(
+                        re.search(r"\b" + re.escape(k) + r"\b", sub_block)
+                        for k in keyword_map
+                    ):
                         search_block = sub_block
                         break
 
                 found_words = []
-                for keyword_lowercase in keyword_map.keys():
-                    matches = re.findall(r'\b' + re.escape(keyword_lowercase) + r'\b', search_block)
+                for keyword_lowercase in keyword_map:
+                    matches = re.findall(
+                        r"\b" + re.escape(keyword_lowercase) + r"\b", search_block
+                    )
                     found_words.extend(matches)
 
                 if not found_words:
@@ -89,42 +103,40 @@ class CategoriesModelThoughtConsistencyEvals(BaseEvaluator):
                         eval_success=True,
                         passed=False,
                         score=0,
-                        feedback="Category was not found in the last few sentences of model_thought"
-                        )
-                
+                        feedback="Category was not found in the last few sentences of model_thought",
+                    )
+
                 # Count frequencies
                 # Handle ties by checking which keyword appears closest to the end of the text
                 counts = Counter(found_words)
                 most_common = counts.most_common()
                 highest_freq = most_common[0][1]
-                top_candidates = [word for word, freq in most_common if freq == highest_freq]
+                top_candidates = [
+                    word for word, freq in most_common if freq == highest_freq
+                ]
 
                 if len(top_candidates) > 1:
-                    winner_lowercase = max(top_candidates, key=lambda w: search_block.rfind(w))
+                    winner_lowercase = max(
+                        top_candidates, key=lambda w: search_block.rfind(w)
+                    )
                     most_likely_category = keyword_map[winner_lowercase]
                 else:
                     most_likely_category = keyword_map[top_candidates[0]]
-                
 
                 if most_likely_category == single_result_category:
                     return EvalResult(
-                        eval_name=self.name,
-                        eval_success=True,
-                        passed=True,
-                        score=1
-                        )
+                        eval_name=self.name, eval_success=True, passed=True, score=1
+                    )
                 else:
                     return EvalResult(
                         eval_name=self.name,
                         eval_success=True,
                         passed=False,
                         score=0,
-                        feedback="model_thought not consistent with result category."
-                        )
+                        feedback="model_thought not consistent with result category.",
+                    )
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             return EvalResult(
-                eval_name=self.name,
-                eval_success=False,
-                error_message=repr(e)
-                )
+                eval_name=self.name, eval_success=False, error_message=repr(e)
+            )
